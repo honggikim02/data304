@@ -1,6 +1,6 @@
 
 format:
-  title: "John Calvin's Data 304 Portfolio"
+  title: "Hong Gi Kim's Data 304 Portfolio"
   html:
     output-file: "index.html"
 embed-resources: true
