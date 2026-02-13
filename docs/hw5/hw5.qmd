@@ -1,1 +1,95 @@
+---
+title: "hw5"
+format: 
+  html:
+    output-file: "index"
+embed-resources: true
+---
+
+### Exercise 2
+
+a.
+
+![tweet](https://xeno.graphics/wp-content/uploads/2018/07/timemap.png)
+
+
+b. What marks are being used? What variables are mapped to which properties?
+  - Marks: points (circles)
+  - Variables: 
+    - X-axis: Time before tweet
+    - Y-axis: Time after tweet
+    - Color Hue: Time of Day
+
+c. What is the main story of this graphic?
+  - The graphic tells a story of rhythm and burstiness in human communication.
+
+d. What makes it a good graphic?
+  - Clear labels with distinct graphic aesthetic choices to clarify for the viewers to analyze the plot.
+
+e. What features do you think you would know how to implement in Vega-Lite?
+  - All the basic implements of the plot (x, y, colors), and couple more codes such as facet, filter, transform, etc..
+
+f. Are there any features of the graphic that you would not know how to do in Vega-Lite? If so, list them.
+  - Converting variables into different unit
+
+### Exercise 3
+
+
+```{r}
+library(vegawidget)
+
+  '
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": {
+    "url": "https://calvin-data304.netlify.app/data/weather-with-dates.csv"
+  },
+  "mark": {"type": "line", "opacity": 0.5},
+  "encoding": {
+    "x": {
+      "field": "date",
+      "timeUnit": "monthdate",
+      "type": "temporal",
+      "axis": {"format": "%b"},
+      "title": "Month"
+    },
+    "y": {
+      "field": "temp_max",
+      "type": "quantitative",
+      "title": "Maximum Temperature (C)"
+    },
+    "color": {
+      "field": "year"
+    }
+  }
+} 
+' |> as_vegaspec()
+```
+
+
+```{r}
+'
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": {
+    "url": "https://calvin-data304.netlify.app/data/weather-with-dates.csv"
+  },
+"title": "Exercise 2: Average Temperature",
+"mark": "bar",
+"encoding": {
+  "x": {
+    "field": "date",
+    "timeUnit": "month",
+    "type": "ordinal",
+    "title": "Month"},
+
+  "y": {
+    "field": "temp_max",
+    "aggregate": "mean",
+    "type": "quantitative",
+    "title": "Mean Max Temp"}
+    }
+}
+' |> as_vegaspec()
+```
 

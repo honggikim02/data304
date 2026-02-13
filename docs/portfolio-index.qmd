@@ -1,6 +1,19 @@
+<<<<<<< HEAD
 
 format:
   title: "Hong Gi Kim's Data 304 Portfolio"
   html:
     output-file: "index.html"
 embed-resources: true
+=======
+---
+title: "Hong Gi Kim's Data 304 Portfolio"
+format:
+  html:
+    output-file: "index"
+embed-resources: true
+---
+
+[HW 5](hw5/index.html)
+
+>>>>>>> b27290b (hw05 done)
