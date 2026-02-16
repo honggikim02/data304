@@ -1,0 +1,111 @@
+---
+title: "hw6"
+format: 
+  html:
+    output-file: "index"
+embed-resources: true
+---
+
+### Exercise 1
+
+a.  What is the most interesting lesson, guide, or piece of advice Tufte offers you in this chapter?
+
+-   One of the most compelling pieces of advice Tufte offers in this chapter is his definition of "Graphical Excellence," particularly the principle of efficiency. He states:
+
+"Graphical excellence is that which gives to the viewer the greatest number of ideas in the shortest time with the least ink in the smallest space."
+
+b.  Tufte shares some of his favorite graphics in this chapter. Pick one (but not the one about the military advance on and retreat from Russia) and answer the following.
+
+What page is your graphic on? \[Take a screen shot and include the image as well, if you can.\]
+
+-   pg. 30
+
+Why did you pick the graphic you chose?
+
+-   I chose this graphic because it is a piece to show good quality of **data density**, where it contains 1888 numbers of data.
+
+What encoding channels are used in the graphic? What variables are they associated with?
+
+-   Time (x-axis), Temperature (y-axis), Normal Range (Area), Actual Daily Range (line of border), Precipitation (Bars)
+
+What, if any, elements of the graphic would be hard/impossible for you to implement in Vega-Lite (given what we know so far)?
+
+-   Composition of Layout: I do not think i can create one graphic composite with two different graph (main, and bar at the bottom)
+
+What point is Tufte illustrating with this graphic?
+
+-   Tufte uses this graphic to illustrate that graphics that are at their best when displaying large, complex data sets.
+
+### Exercise 3
+
+##### Step 1
+
+List three things that are not ideal about this graph. What makes it challenging?
+
+1.  There are two y-axis that are in different scale. This is hard to visualize the comparison of two different variables in one set-scale.
+2.  The text labels indicating the single data is not in good position.
+3.  The circle and line mark for the Response Rate is not well placed. The circle seems a bit off.
+
+##### Step 2
+
+For each of the three things you’ve listed, describe how you would overcome the given challenge.
+
+1.  I will use concat to set two different graphs for each completion and response rate.
+2.  The text labels could be modified adjusting dy and dx under the mark type text.
+3.  I will layer the marks (point and line) to precisely lay at the same point.
+
+##### Step 3
+
+Download the data. Create your visual that puts into practice the strategies you’ve outlined.
+
+```{r}
+library(vegawidget)
+
+'
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data":
+    { "values" :
+        [{"Date":"Q1-2017","Completion Rate":0.91,"Response Rate":0.023},
+        {"Date":"Q2-2017","Completion Rate":0.93,"Response Rate":0.018},
+        {"Date":"Q3-2017","Completion Rate":0.91,"Response Rate":0.028},
+        {"Date":"Q4-2017","Completion Rate":0.89,"Response Rate":0.023},
+        {"Date":"Q1-2018","Completion Rate":0.84,"Response Rate":0.034},
+        {"Date":"Q2-2018","Completion Rate":0.88,"Response Rate":0.027},
+        {"Date":"Q3-2018","Completion Rate":0.91,"Response Rate":0.026},
+        {"Date":"Q4-2018","Completion Rate":0.87,"Response Rate":0.039},
+        {"Date":"Q1-2019","Completion Rate":0.83,"Response Rate":0.028}] 
+    },
+  "vconcat": [
+    {
+      "height": 200,
+      "width": 400,
+      "title": "Completion Rate",
+      "encoding": {
+        "x": {"field": "Date", "type": "ordinal", "sort": null, "axis": {"labelAngle": 20}},
+        "y": {"field": "Completion Rate", "type": "quantitative"}
+      },
+      "layer": [
+        {"mark": {"type": "bar"}},
+        {
+        "mark": {"type": "text", "dy": -5, "color": "darkblue", "align": "center"},
+        "encoding": {"text": {"field": "Completion Rate"}}}]
+    },
+    {
+      "height": 200,
+      "width": 400,
+      "title": "Response Rate",
+      "encoding": {
+        "x": {"field": "Date", "type": "ordinal", "sort": null, "axis": {"labelAngle": 20}},
+        "y": {"field": "Response Rate", "type": "quantitative"}
+      },
+      "layer": [
+        {"mark": {"type": "point", "opacity": 0.8}}, 
+        {"mark": {"type": "line", "opacity": 0.5}},
+        {
+        "mark": {"type": "text", "dx": 7, "dy": -7, "color": "darkblue"},
+        "encoding": {"text": {"field": "Response Rate"}}}]
+    }
+  ]} 
+  ' |> as_vegaspec()
+```
