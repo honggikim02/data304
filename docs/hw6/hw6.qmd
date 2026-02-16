@@ -20,8 +20,8 @@ What page is your graphic on? \[Take a screen shot and include the image as well
 
 -   pg. 30
 
-Why did you pick the graphic you chose?
-
+Why did you pick the graphic you chose? 
+ 
 -   I chose this graphic because it is a piece to show good quality of **data density**, where it contains 1888 numbers of data.
 
 What encoding channels are used in the graphic? What variables are they associated with?
