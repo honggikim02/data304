@@ -1,0 +1,319 @@
+---
+title: "hw7"
+format: 
+  html:
+    output-file: "index"
+embed-resources: true
+---
+
+### Exercise 1
+
+a.  List some guidelines/advice Wilke gives about creating bar charts.
+
+-   If the labels are long, or looks ugly to plot bars vertically, you can switch the axes to present the bar horizontally.
+-   The order of the bar should be meaningful
+-   Wilke recommends the bar should always start from zero
+
+b.  When is it not advised to use a bar chart? Why?
+
+-   When the value is large but the differences between bars are small, because you should start the bar at zero, there will be meaningless chunks/areas.
+
+c.  What alternatives to bars are mentioned in this chapter?
+
+-   Dotplots: for when you don't want to start the value at zero
+-   Heatmaps: used for very large amount of dataset
+
+d.  What guidance does Wilke give about whether or not to stack bars vs. dodge them (using an offset in Vega-Lite)?
+
+-   Stack bars: used when the sum of the bar is meaningful
+-   Dodging bars: it might require mental effort to interpret the plot
+
+e.  *Figure 6.3*
+
+```{r}
+library(vegawidget)
+
+'
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": { "url": "https://gist.githubusercontent.com/honggikim02/392bd1d9909ccd3057e58b4684b60319/raw/a3e8e9d07fc7d34889a8d41008dc7e42c355f689/cow-movies.csv" },
+  "height": 300,
+  "width": 400,
+  "mark": "bar",
+  "transform": [{"calculate": "datum.amount/1000000",
+  "as": "in_million"}],
+  "encoding": {
+    "x": {
+      "field": "in_million", 
+      "type": "quantitative",
+      "title": "weekend Gross (million USD)",
+      "scale": {"domain": [0,60]}, "axis": {"tickCount":3}},
+    "y": {"field": "title_short", 
+    "type": "nominal", 
+    "sort": "-x", 
+    "title": ""}
+  }
+}' |> as_vegaspec()
+
+
+```
+
+f.  *Figure 6.8*
+
+```{r}
+library(vegawidget)
+'
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": { "url": "https://gist.githubusercontent.com/honggikim02/1a4d21a208d781a35ad8e67673e8328d/raw/273695945cd24c8496d8b9a69633a5c55dac371c/cow-income.csv" },
+  "height": 200,
+  "width": 400,
+  "mark": "bar",
+  "transform": [{"filter": "datum.race != \'all\' && datum.race != \'white_non_hispanic\'"}],
+
+  "encoding": {
+
+    "x": {
+      "field": "race", 
+      "type": "nominal",
+      "title": "",
+      "sort": ["asian", "white", "hispanic", "black"],
+      "axis": {"labelAngle": 0}
+    },
+    
+    "y": {"field": "median_income", 
+    "type": "quantitative", 
+    "title": "median Income (USD)",
+    "axis": {"format": "$,d"}},
+
+    "xOffset": {"field": "age"},
+
+    "color": {"field": "age", "scale": {"scheme": "blues"}, "title": "age (yrs)"}
+  }
+}
+' |> as_vegaspec()
+ 
+```
+
+*Figure 6.9*
+
+```{r}
+library(vegawidget)
+'
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": { "url": "https://gist.githubusercontent.com/honggikim02/1a4d21a208d781a35ad8e67673e8328d/raw/273695945cd24c8496d8b9a69633a5c55dac371c/cow-income.csv" },
+  "height": 200,
+  "width": 300,
+  "mark": "bar",
+  "transform": [{"filter": "datum.race != \'all\' && datum.race != \'white_non_hispanic\'"}],
+  
+
+  "encoding": {
+
+    "x": {
+      "field": "age", 
+      "type": "nominal",
+      "axis": {"labelAngle": 0},
+      "title": "age (years)"
+    },
+    
+    "y": {"field": "median_income", 
+    "type": "quantitative", 
+    "title": "median Income (USD)",
+    "axis": {"format": "$,d"}},
+    "facet": {"field": "race", "columns": 2, "title": ""}
+  }
+}' |> as_vegaspec()
+
+```
+
+g.  *Figure 6.11*
+
+```{r}
+library(vegawidget)
+'
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": { "url": "https://gist.githubusercontent.com/honggikim02/483f5529f1f61a953cc829480d80d843/raw/6daa30370eccdf5318da957e2aaa196162507e58/cow-gapminder.csv" },
+  "height": 400,
+  "width": 400,
+  "mark": {"type": "circle", "color": "blue", "size": 100},
+
+  "transform": [{"filter": "datum.year == 2007 && datum.continent == \'Americas\'"}],
+  
+
+  "encoding": {
+
+    "x": {
+      "field": "lifeExp", 
+      "type": "quantitative",
+      "scale": {"domain": [60,80]},
+      "axis": {"labelAngle": 0, "tickCount": 5},
+      "title": "life expectancy (years)"
+    },
+    
+    "y": {"field": "country", 
+    "type": "ordinal", 
+    "title": "",
+    "sort": "-x",
+    "axis": {"grid": true}
+  }
+}}
+' |> as_vegaspec()
+```
+
+Figure 6.12 is labelled bad because the bars are too long until meaningful values at the edge. It waste too much area and draws meaningless attention.
+
+Figure 6.13 is labelled bad because it is not in order of ascending or descending with very high number of country names; which makes difficult to read the data.
+
+### Exercise 2
+
+*a. Watch the video*
+
+*b. List at least three pieces of advice you can glean from this video that might help you design good graphics.*
+
+1.  Design for human perception: The human visual system has specific quirks, for instance, we evaluate colors based on surrounding contrast and struggle to compare segments that don't sit on a flat line.
+
+2.  Drawing on Edward Tufte’s principles, you should maximize the "data-to-ink ratio" by stripping away unnecessary shadows, background textures, and decorative fonts that distract from the numbers. 
+
+3.  Instead of cramming massive amounts of data into a single, overwhelming graphic, you should build complex visualizations systematically. Establish a clear, simple chart for one subset of your data, highlight the most important takeaway, and then repeat that exact design across multiple panels. This guides the viewer step-by-step so they can comfortably decode the entire dataset.
+
+*c. There are two figures in this video that come from Chapter 1 of Tufte (2001). Did you spot them? Which figures are they?*
+
+1.  Dr. Healy explicitly shows and discusses Charles Joseph Minard's "Carte Figurative" of the French Army's retreat from Moscow, calling it "the greatest statistical graphic ever made" and noting it was popularized by Tufte. This figure is a centerpiece of Tufte's Chapter 1.
+
+2.  Dr. Healy shows a dot plot of "Life Expectancy by Continent" and discusses the "Cleveland dot plot" as a superior alternative to bar charts for certain data. Tufte's Chapter 1 features a dot plot of "Life Expectancies of Countries in the Americas" to illustrate graphical excellence and the high data-ink ratio.
+
+### Exercise 3
+
+*a. In Vega-Lite lingo, what makes something be a heat map?*
+
+-   In order to make a heat map in Vega-lite, we have to use mark as rect and put color as the field to distinguish the "heat".
+
+*b. Recreate Figure 6.14 or 6.15 from Wilke (2019) (your choice). Or get fancy and include an interactive element that let’s you select the year to order by.*
+
+```{r}
+library(vegawidget)
+'
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": { "url": "https://gist.githubusercontent.com/honggikim02/64d2cacba5374e559f3372843e62a512/raw/0e57743ef0d78d0706adce66ec581872e3ce4a58/cow-internet2.csv" },
+  "height": 400,
+  "width": 600,
+  "mark": {
+    "type": "rect",
+    "stroke": "white",
+    "strokeWidth": 0.4},
+    
+ "transform": [
+    {
+      "calculate": "datum.year == 2016 ? datum.users : 0", 
+      "as": "users_2016_only"
+    }
+  ],
+  
+  "encoding": {
+
+    "x": {
+      "field": "year", 
+      "type": "ordinal",
+      "title": ""
+      },
+    
+    "y": {
+    "field": "country", 
+    "type": "nominal",
+    "sort": {
+      "field": "users_2016_only",
+      "op": "max",
+      "order": "descending"},
+      "title": "",
+      "axis": {"orient": "right", "ticks": false}
+
+  },
+
+  "color": {
+    "field": "users",
+    "type": "quantitative",
+    "scale": {"scheme": "magma"},
+    "title": "internet users/100 people",
+    "legend": {"orient": "top"}
+  }
+  
+  }}
+' |> as_vegaspec()
+```
+
+*c. At around 20:10, Healy presents a possible problem with heat maps, what is it?*
+
+-   it is nearly impossible for a viewer to accurately compare the absolute value of two distant squares of the same color if they are surrounded by different colored borders.
+
+*d. But starting at around 44:12, he presents a heat map as a “show pony”. Why isn’t the problem presented earlier an issue here? Is it an issue in the figure you make in part b? Why or why not?*
+
+-   Healy's "show pony" graphic is a massive heat map showing the demography of mortality in France over 200 years. The Mach band problem is not an issue here because the goal of the graphic is not for the viewer to pick out individual pixels and precisely compare their exact mortality rates. No, it is not a major issue in the Internet adoption heat map (Figure 6.14) either. Because the goal of the Internet chart is simply to see which countries adopted the internet early and which caught up later, the inability to decode exact percentages from the colors does not ruin the graphic's purpose.
+
+### Exercise 4
+
+*a. What does Healy have to say about pie charts in his video?*
+
+-   Healy is highly critical of pie charts, he explains that human perception is very poor at decoding angles and relative areas, making pie charts incredibly difficult to read accurately.
+
+*b. How does that compare to what Wilke says in Section 10.1 of Wilke (2019)?*
+
+-   Wilke is significantly more forgiving of pie charts than Healy. Wilke argues that pie charts are actually highly effective when you have a very small dataset and your specific goal is to visually emphasize simple fractions, such as one-half, one-third, or one-quarter.
+
+*c. What alternatives does Wilke present to pie charts and in what situations does he favor each? (You should be comparing pie charts to two other types of graphics that can be made with the same sort of data.)*
+
+-   Side-by-side bars: Wilke favors this alternative when you need to directly compare the individual fractions against each other. Because side-by-side bars all start at the same zero baseline, it is very easy to see which category is larger than the others.
+
+-   Stacked bars: Wilke favors stacked bars when you want to visualize proportions across a time series or across multiple conditions.
+
+*d. We won’t make many pie charts, but I suppose you should make at least one. To do this in Vega-Lite, use an arc mark. Recreate Figure 10.1 of Wilke (2019).*
+
+```{r}
+library(vegawidget)
+'
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": { "url": "https://cdn.jsdelivr.net/npm/vega-datasets@3.2.1/data/jobs.json" },
+  "height": 400,
+  "width": 400,
+  "mark": {
+    "type": "arc"},
+  "params": [
+    {
+      "name": "year",
+      "value": "1850",
+      "bind": {"input": "range", "min": 1850, "max": 2000, "step": 10}
+    }   
+     
+  ],
+ "transform": [
+    {
+      "filter": "datum.year == year"
+    },
+    {
+      "filter": {
+        "field": "job", 
+        "oneOf": ["Funeral Director", "Machinist", "Nurse"]
+      }
+    }
+  ],
+  "encoding": {
+
+    "theta": {
+      "field": "count", 
+      "type": "quantitative",
+      "title": ""
+      },
+    
+    "color": {
+    "field": "job", 
+    "type": "nominal",
+      "title": ""
+
+  }
+  }}
+'|> as_vegaspec()
+```

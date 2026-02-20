@@ -12,3 +12,6 @@ embed-resources: true
 >>>>>>> b27290b (hw05 done)
 
 [HW 6](hw6/index.html)
+
+[HW 7](hw7/index.html)
+
