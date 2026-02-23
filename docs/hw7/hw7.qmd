@@ -1,5 +1,6 @@
 ---
-title: "hw7"
+title: "HW 7"
+subtitle: "Hong Gi Kim"
 format: 
   html:
     output-file: "index"

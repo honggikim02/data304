@@ -1,0 +1,495 @@
+---
+title: "HW 8"
+subtitle: "Hong Gi Kim"
+format: 
+  html:
+    output-file: "index"
+embed-resources: true
+code-fold: true
+---
+
+### Exercise 1
+
+```{r}
+library(vegawidget)
+'
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": {"url": "https://calvin-data304.netlify.app/data/swd-lets-practice-ex-2-3.json"},
+  "mark": "bar",
+  "height": 400,
+  "width": 400, 
+  "transform": [{
+    "fold": ["capacity", "demand"],
+    "as": ["V1", "V2"]
+  }],
+  "encoding": {
+    "x": {
+      "field": "date",
+      "type": "ordinal"
+  },
+    "y": {
+      "field": "V2",
+      "type": "quantitative",
+      "title": ""
+    },
+    "xOffset": {
+      "field": "V1",
+      "type": "nominal"
+    },
+    "color": {"field": "V1", "title": ""}
+  }
+}' |> as_vegaspec()
+```
+
+```{r}
+library(vegawidget)
+'
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": {"url": "https://calvin-data304.netlify.app/data/swd-lets-practice-ex-2-3.json"},
+  "mark": "bar",
+  "height": 400,
+  "width": 400, 
+  "transform": [{
+    "fold": ["capacity", "demand"],
+    "as": ["V1", "V2"]
+  }],
+  "encoding": {
+    "x": {
+      "field": "date",
+      "type": "ordinal"
+  },
+    "y": {
+      "field": "V2",
+      "type": "quantitative",
+      "title": "",
+      "stack": null
+    },
+    "color": {"field": "V1", "title": ""},
+    "opacity": {"value": 0.7}
+  }
+}
+' |> as_vegaspec()
+```
+
+
+
+```{r}
+library(vegawidget)
+'
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": {"url": "https://calvin-data304.netlify.app/data/swd-lets-practice-ex-2-3.json"},
+  "height": 200,
+  "width": 400, 
+  "encoding": {
+    "x": {
+      "field": "date",
+      "type": "ordinal"
+      }
+    },
+
+  "layer": [
+    {"mark": {
+        "type": "rule", "color": "gray", "size": 3},
+      "encoding": {
+        "y": {"field": "demand", "type": "quantitative"},
+        "y2": {"field": "capacity"}
+      }
+    },
+
+    {"mark": {
+        "type": "point", 
+        "color": "orange", 
+        "filled": true, 
+        "size": 50},
+      "encoding": {
+        "y": {
+          "field": "demand",
+          "type": "quantitative"}}
+    },
+
+    {"mark": {
+        "type": "point", 
+        "color": "blue", 
+        "filled": true,
+        "size": 50},
+      "encoding": {
+        "y": {"field": "capacity", "type": "quantitative"}
+      }
+    }
+  ]
+}
+  ' |> as_vegaspec()
+
+```
+
+```{r}
+library(vegawidget)
+'
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": {"url": "https://calvin-data304.netlify.app/data/swd-lets-practice-ex-2-3.json"},
+  "mark": "line",
+  "height": 200,
+  "width": 400, 
+  "transform": [{
+    "fold": ["capacity", "demand"],
+    "as": ["V1", "V2"]
+  }],
+  "encoding": {
+    "x": {
+      "field": "date",
+      "type": "ordinal"
+  },
+    "y": {
+      "field": "V2",
+      "type": "quantitative",
+      "title": ""
+    },
+    "color": {"field": "V1", "title": ""}
+  }
+}
+'|> as_vegaspec()
+```
+
+
+```{r}
+library(vegawidget)
+'
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": {"url": "https://calvin-data304.netlify.app/data/swd-lets-practice-ex-2-3.json"},
+  "mark": {"type": "bar"},
+  "height": 400,
+  "width": 400,
+
+  "transform": [
+    {"calculate": "datum.demand - datum.capacity", "as": "unmet_demand"},
+
+    {
+    "fold": ["unmet_demand", "capacity"],
+    "as": ["category", "value"]
+  }],
+
+  "encoding": {
+    "x": {
+      "field": "date",
+      "type": "ordinal"
+    },
+  
+    "y": {
+      "field": "value",
+      "type": "quantitative",
+      "title": ""
+    },
+
+    "color": {"field": "category", "title": ""}
+  }
+}
+' |> as_vegaspec()
+```
+
+
+```{r}
+library(vegawidget)
+'
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": {"url": "https://calvin-data304.netlify.app/data/swd-lets-practice-ex-2-3.json"},
+  "mark": {"type": "line", "point": true},
+  "height": 400,
+  "width": 400,
+
+  "transform": [
+    {"calculate": "datum.demand - datum.capacity", "as": "unmet_demand"},
+
+    {
+    "fold": ["unmet_demand", "capacity"],
+    "as": ["category", "value"]
+  }],
+
+  "encoding": {
+    "x": {
+      "field": "date",
+      "type": "ordinal"
+    },
+  
+    "y": {
+      "field": "unmet_demand",
+      "type": "quantitative",
+      "title": ""
+    }
+  }
+}
+' |> as_vegaspec()
+```
+
+
+### Exercise 2
+
+*a*
+
+```{r}
+library(vegawidget)
+'
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "width": 600,
+  "height": 400,
+  "data": {
+    "url": "https://cdn.jsdelivr.net/npm/vega-datasets@2.8.0/data/jobs.json"
+  },
+
+  "mark": {
+    "type": "line",
+    "point": true,
+    "tooltip": true
+  },
+
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal"
+          },
+
+    "y": {
+      "aggregate": "sum",
+      "field": "perc",
+      "type": "quantitative",
+      "scale": {"domain": [0, 1]}
+    },
+    
+    "color": {
+      "field": "sex",
+      "type": "nominal",
+      "title": "Gender"
+          }
+  }
+}
+' |> as_vegaspec()
+```
+
+The graph above shows what the "perc" means in the dataset. The graph shows total percentage (perc) of male and female throughout all occupations. The line graph shows that the percentage of male decrease from near 1.0 to 0.5 when the rate of female increased from 0 to 0.5 in span of 150 years. This shows the change in society where it was male-dominant to society pursuing gender equality.
+
+
+*b*
+
+```{r}
+library(vegawidget)
+'
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": "Percent of Men vs. Women in Various Jobs",
+  "data": {
+    "url": "https://cdn.jsdelivr.net/npm/vega-datasets@2.8.0/data/jobs.json"
+  },
+  "transform": [
+    {"filter": {
+        "field": "year",
+        "oneOf": [1900, 1950, 1980, 2000]}},
+    {"pivot": "sex",
+    "value": "perc",
+    "groupby": ["year", "job"]}
+  ],
+
+  "facet": {
+    "field": "year",
+    "type": "ordinal",
+    "title": "Year"
+  },
+  "spec": {
+    "width": 200,
+    "height": 200,
+
+    "mark": {
+      "type": "circle",
+      "size": 60,
+      "opacity": 0.7,
+      "tooltip": true
+    },
+
+    "encoding": {
+      "x": {
+        "field": "men",
+        "type": "quantitative",
+        "title": "Percent of Men",
+        "axis": {"format": ".0%"}
+      },
+
+      "y": {
+        "field": "women",
+        "type": "quantitative",
+        "title": "Percent of Women",
+        "axis": {"format": ".0%"}
+      }
+    }
+  }
+}'|> as_vegaspec()
+```
+
+*c*
+
+```{r}
+library(vegawidget)
+'
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": "True Percent of Men vs. Women in Various Jobs",
+  "data": {
+    "url": "https://cdn.jsdelivr.net/npm/vega-datasets@2.8.0/data/jobs.json"
+  },
+  "transform": [
+    {"filter": {
+      "field": "year",
+      "oneOf": [1900, 1950, 1980, 2000]}
+    },
+    {"joinaggregate": [{
+      "op": "sum",
+      "field": "count",
+      "as": "total_sex_count"}],
+
+      "groupby": ["year", "sex"]
+    },
+
+    {"calculate": "datum.count / datum.total_sex_count",
+    "as": "true_perc"},
+
+    {"pivot": "sex",
+    "value": "true_perc",
+    "groupby": ["year", "job"]
+    }
+  ],
+
+  "facet": {
+    "field": "year",
+    "type": "ordinal",
+    "title": "Year"
+  },
+
+  "spec": {
+    "width": 300,
+    "height": 300,
+
+    "mark": {
+      "type": "circle",
+      "size": 60,
+      "opacity": 0.7
+    },
+
+    "encoding": {
+      "x": {
+        "field": "men",
+        "type": "quantitative",
+        "title": "Percent of Men (out of all men)",
+        "axis": {
+          "format": ".0%"
+        }
+      },
+
+      "y": {
+        "field": "women",
+        "type": "quantitative",
+        "title": "Percent of Women (out of all women)",
+        "axis": {
+          "format": ".0%"
+        }
+      },
+
+      "tooltip": [
+        {"field": "job",
+        "type": "nominal",
+        "title": "Job"
+        },
+
+        {"field": "men",
+        "type": "quantitative",
+        "title": "Men",
+        "format": ".1%"
+        },
+
+        {"field": "women",
+        "type": "quantitative",
+        "title": "Women",
+        "format": ".1%"
+        }
+      ]
+    }
+  }
+}
+' |> as_vegaspec()
+```
+
+### Exercise 3
+
+```{r}
+library(vegawidget)
+'
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": {
+    "text": "Gas Price Trends by Region",
+    "subtitle": "Prices in US $ per gallon (1991-2016)"
+  },
+  "data": {
+    "url": "https://gist.githubusercontent.com/honggikim02/03110b3ff72b77858064f84f36ee2c42/raw/137ed6410fd4021801b29c3e81b3c46e3f623a33/pump_gas_price.csv"
+  },
+  "transform": [
+    {
+      "lookup": "country",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/lukes/ISO-3166-Countries-with-Regional-Codes/master/all/all.csv"
+        },
+        "key": "name",
+        "fields": ["region"]
+      }
+    },
+    {
+      "filter": "datum.region != null"
+    },
+    {
+      "fold": [
+        "1991", "1992", "1993", "1994", "1995", "1996", "1998", "2000", 
+        "2002", "2004", "2006", "2008", "2010", "2012", "2014", "2016"
+      ],
+      "as": ["year", "price"]
+    }
+  ],
+  "facet": {
+    "field": "region",
+    "type": "nominal",
+    "columns": 4
+  },
+  "spec": {
+    "width": 350,
+    "height": 200,
+    "mark": {"type": "point", "tooltip": true},
+    "encoding": {
+      "x": {
+        "field": "year",
+        "type": "ordinal",
+        "title": "Year"
+      },
+      "y": {
+        "field": "price",
+        "type": "quantitative",
+        "title": "Gas Price (US $ / Gallon)"
+      },
+      "color": {
+        "field": "country",
+        "type": "nominal",
+        "title": "Region"
+      },
+      "tooltip": [
+        {"field": "country", "title": "Country"},
+        {"field": "year", "title": "Year"},
+        {"field": "price", "title": "Price","format":"$.2f"}
+      ]
+    }
+  }
+}
+'|> as_vegaspec()
+```
+
