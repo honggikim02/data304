@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>HW 8</title>
+<title>Final Portfolio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -3423,7 +3423,7 @@ if (HTMLWidgets.shinyMode) {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">HW 8</h1>
+<div class="quarto-title-block"><div><h1 class="title">Final Portfolio</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 <p class="subtitle lead">Hong Gi Kim</p>
 </div>
 
@@ -3441,293 +3441,144 @@ if (HTMLWidgets.shinyMode) {
 </header>
 
 
-<section id="exercise-1" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-1">Exercise 1</h3>
+<section id="exercise-1" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-1">Exercise 1</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegawidget)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="st">{</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;$schema&quot;: &quot;https://vega.github.io/schema/vega-lite/v6.json&quot;,</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;data&quot;: {&quot;url&quot;: &quot;https://calvin-data304.netlify.app/data/swd-lets-practice-ex-2-3.json&quot;},</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;mark&quot;: &quot;bar&quot;,</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;height&quot;: 400,</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;width&quot;: 400, </span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;transform&quot;: [{</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;fold&quot;: [&quot;capacity&quot;, &quot;demand&quot;],</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;as&quot;: [&quot;V1&quot;, &quot;V2&quot;]</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="st">  }],</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;encoding&quot;: {</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;x&quot;: {</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;field&quot;: &quot;date&quot;,</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;type&quot;: &quot;ordinal&quot;</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="st">  },</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;y&quot;: {</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;field&quot;: &quot;V2&quot;,</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;type&quot;: &quot;quantitative&quot;,</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;title&quot;: &quot;&quot;</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="st">    },</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;xOffset&quot;: {</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;field&quot;: &quot;V1&quot;,</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;type&quot;: &quot;nominal&quot;</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="st">    },</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;color&quot;: {&quot;field&quot;: &quot;V1&quot;, &quot;title&quot;: &quot;&quot;}</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="st">  }</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="st">}&#39;</span> <span class="sc">|&gt;</span> <span class="fu">as_vegaspec</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="st">{</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;$schema&quot;: &quot;https://vega.github.io/schema/vega-lite/v6.json&quot;,</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;data&quot;: {</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;url&quot;: &quot;https://calvin-data304.netlify.app/data/twins-genetics-wide.json&quot;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="st">  },</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="st"> &quot;title&quot;: { </span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;text&quot;: &quot;Comparing Genetic Shares of Pairs of Twin&quot;,</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;fontSize&quot;: 20,</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;anchor&quot;: &quot;middle&quot;,</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;subtitle&quot;: &quot;Using Ancestry kit&quot;,</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;subtitleColor&quot;: &quot;grey&quot;,</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;subtitleFontSize&quot;: 15},</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;vconcat&quot;:[</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="st">    {</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="st">     &quot;height&quot;: 200,</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="st">     &quot;width&quot;: 200,</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="st">     &quot;title&quot;: {</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="st">     &quot;text&quot;: &quot;Regions&quot;,</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="st">     &quot;orient&quot;: &quot;bottom&quot;,</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="st">     &quot;anchor&quot;: &quot;middle&quot;,</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="st">     &quot;offset&quot;: 15}, </span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="st">     &quot;mark&quot;: {&quot;type&quot;: &quot;bar&quot;, &quot;tooltip&quot;: true},</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="st">     &quot;encoding&quot;: {</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;facet&quot;: {</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="st">          &quot;field&quot;: &quot;pair&quot;,</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="st">          &quot;columns&quot;: 3,</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="st">          &quot;title&quot;: null,</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="st">          &quot;header&quot;: {</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="st">            &quot;labelExpr&quot;: &quot;</span><span class="sc">\&#39;</span><span class="st">Pair </span><span class="sc">\&#39;</span><span class="st"> + datum.value&quot; </span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="st">          }</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="st">        },</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;x&quot;: {</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="st">          &quot;field&quot;: &quot;region&quot;,</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="st">          &quot;type&quot;: &quot;nominal&quot;,</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="st">          &quot;axis&quot;: {&quot;labelAngle&quot;:45},</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="st">          &quot;title&quot;: null</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="st">        },</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;y&quot;:{</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="st">          &quot;field&quot;: &quot;Ancestry&quot;,</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="st">          &quot;type&quot;: &quot;quantitative&quot;,</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="st">          &quot;title&quot;: &quot;Genetic Share&quot;</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="st">        },</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;xOffset&quot;: {</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="st">          &quot;field&quot;: &quot;id&quot;</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="st">        },</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;color&quot;: {</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="st">          &quot;field&quot;: &quot;id&quot;,</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="st">          &quot;title&quot;: &quot;A/B&quot;</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="st">        }</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="st">      },</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;resolve&quot;: {</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;axis&quot;:{&quot;x&quot;: &quot;independent&quot;}</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="st">      }</span></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="st">    }</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="st">  ]</span></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;</span><span class="sc">|&gt;</span> <span class="fu">as_vegaspec</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: vega_lite version 6 larger than maximum major-version available:
 5.16.3</code></pre>
 </div>
 <div class="cell-output-display">
-<div id="htmlwidget-c11a0edf3a54d81b3d90" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c11a0edf3a54d81b3d90">{"x":{
+<div id="htmlwidget-75c2de58f93bb9a21ba8" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-75c2de58f93bb9a21ba8">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
     "data": {
-      "url": "https://calvin-data304.netlify.app/data/swd-lets-practice-ex-2-3.json"
+      "url": "https://calvin-data304.netlify.app/data/twins-genetics-wide.json"
     },
-    "mark": "bar",
-    "height": 400,
-    "width": 400,
-    "transform": [
+    "title": {
+      "text": "Comparing Genetic Shares of Pairs of Twin",
+      "fontSize": 20,
+      "anchor": "middle",
+      "subtitle": "Using Ancestry kit",
+      "subtitleColor": "grey",
+      "subtitleFontSize": 15
+    },
+    "vconcat": [
       {
-        "fold": [
-          "capacity",
-          "demand"
-        ],
-        "as": [
-          "V1",
-          "V2"
-        ]
-      }
-    ],
-    "encoding": {
-      "x": {
-        "field": "date",
-        "type": "ordinal"
-      },
-      "y": {
-        "field": "V2",
-        "type": "quantitative",
-        "title": ""
-      },
-      "xOffset": {
-        "field": "V1",
-        "type": "nominal"
-      },
-      "color": {
-        "field": "V1",
-        "title": ""
-      }
-    }
-  },
-  "embed_options": {
-    "renderer": "canvas",
-    "defaultStyle": true
-  }
-},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegawidget)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="st">{</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;$schema&quot;: &quot;https://vega.github.io/schema/vega-lite/v6.json&quot;,</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;data&quot;: {&quot;url&quot;: &quot;https://calvin-data304.netlify.app/data/swd-lets-practice-ex-2-3.json&quot;},</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;mark&quot;: &quot;bar&quot;,</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;height&quot;: 400,</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;width&quot;: 400, </span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;transform&quot;: [{</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;fold&quot;: [&quot;capacity&quot;, &quot;demand&quot;],</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;as&quot;: [&quot;V1&quot;, &quot;V2&quot;]</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="st">  }],</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;encoding&quot;: {</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;x&quot;: {</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;field&quot;: &quot;date&quot;,</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;type&quot;: &quot;ordinal&quot;</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="st">  },</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;y&quot;: {</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;field&quot;: &quot;V2&quot;,</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;type&quot;: &quot;quantitative&quot;,</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;title&quot;: &quot;&quot;,</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;stack&quot;: null</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="st">    },</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;color&quot;: {&quot;field&quot;: &quot;V1&quot;, &quot;title&quot;: &quot;&quot;},</span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;opacity&quot;: {&quot;value&quot;: 0.7}</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="st">  }</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;</span> <span class="sc">|&gt;</span> <span class="fu">as_vegaspec</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: vega_lite version 6 larger than maximum major-version available:
-5.16.3</code></pre>
-</div>
-<div class="cell-output-display">
-<div id="htmlwidget-a6e5d055bd0cf0e46d96" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a6e5d055bd0cf0e46d96">{"x":{
-  "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-    "data": {
-      "url": "https://calvin-data304.netlify.app/data/swd-lets-practice-ex-2-3.json"
-    },
-    "mark": "bar",
-    "height": 400,
-    "width": 400,
-    "transform": [
-      {
-        "fold": [
-          "capacity",
-          "demand"
-        ],
-        "as": [
-          "V1",
-          "V2"
-        ]
-      }
-    ],
-    "encoding": {
-      "x": {
-        "field": "date",
-        "type": "ordinal"
-      },
-      "y": {
-        "field": "V2",
-        "type": "quantitative",
-        "title": "",
-        "stack": null
-      },
-      "color": {
-        "field": "V1",
-        "title": ""
-      },
-      "opacity": {
-        "value": 0.7
-      }
-    }
-  },
-  "embed_options": {
-    "renderer": "canvas",
-    "defaultStyle": true
-  }
-},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegawidget)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="st">{</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;$schema&quot;: &quot;https://vega.github.io/schema/vega-lite/v6.json&quot;,</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;data&quot;: {&quot;url&quot;: &quot;https://calvin-data304.netlify.app/data/swd-lets-practice-ex-2-3.json&quot;},</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;height&quot;: 200,</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;width&quot;: 400, </span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;encoding&quot;: {</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;x&quot;: {</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;field&quot;: &quot;date&quot;,</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;type&quot;: &quot;ordinal&quot;</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="st">      }</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="st">    },</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;layer&quot;: [</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="st">    {&quot;mark&quot;: {</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;type&quot;: &quot;rule&quot;, &quot;color&quot;: &quot;gray&quot;, &quot;size&quot;: 3},</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;encoding&quot;: {</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;y&quot;: {&quot;field&quot;: &quot;demand&quot;, &quot;type&quot;: &quot;quantitative&quot;},</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;y2&quot;: {&quot;field&quot;: &quot;capacity&quot;}</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="st">      }</span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="st">    },</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="st">    {&quot;mark&quot;: {</span></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;type&quot;: &quot;point&quot;, </span></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;color&quot;: &quot;orange&quot;, </span></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;filled&quot;: true, </span></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;size&quot;: 50},</span></span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;encoding&quot;: {</span></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;y&quot;: {</span></span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="st">          &quot;field&quot;: &quot;demand&quot;,</span></span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="st">          &quot;type&quot;: &quot;quantitative&quot;}}</span></span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="st">    },</span></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="st">    {&quot;mark&quot;: {</span></span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;type&quot;: &quot;point&quot;, </span></span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;color&quot;: &quot;blue&quot;, </span></span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;filled&quot;: true,</span></span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;size&quot;: 50},</span></span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;encoding&quot;: {</span></span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;y&quot;: {&quot;field&quot;: &quot;capacity&quot;, &quot;type&quot;: &quot;quantitative&quot;}</span></span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a><span class="st">      }</span></span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="st">    }</span></span>
-<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a><span class="st">  ]</span></span>
-<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
-<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a><span class="st">  &#39;</span> <span class="sc">|&gt;</span> <span class="fu">as_vegaspec</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: vega_lite version 6 larger than maximum major-version available:
-5.16.3</code></pre>
-</div>
-<div class="cell-output-display">
-<div id="htmlwidget-663df74d5906308bc433" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-663df74d5906308bc433">{"x":{
-  "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-    "data": {
-      "url": "https://calvin-data304.netlify.app/data/swd-lets-practice-ex-2-3.json"
-    },
-    "height": 200,
-    "width": 400,
-    "encoding": {
-      "x": {
-        "field": "date",
-        "type": "ordinal"
-      }
-    },
-    "layer": [
-      {
+        "height": 200,
+        "width": 200,
+        "title": {
+          "text": "Regions",
+          "orient": "bottom",
+          "anchor": "middle",
+          "offset": 15
+        },
         "mark": {
-          "type": "rule",
-          "color": "gray",
-          "size": 3
+          "type": "bar",
+          "tooltip": true
         },
         "encoding": {
-          "y": {
-            "field": "demand",
-            "type": "quantitative"
+          "facet": {
+            "field": "pair",
+            "columns": 3,
+            "title": null,
+            "header": {
+              "labelExpr": "'Pair ' + datum.value"
+            }
           },
-          "y2": {
-            "field": "capacity"
-          }
-        }
-      },
-      {
-        "mark": {
-          "type": "point",
-          "color": "orange",
-          "filled": true,
-          "size": 50
-        },
-        "encoding": {
+          "x": {
+            "field": "region",
+            "type": "nominal",
+            "axis": {
+              "labelAngle": 45
+            },
+            "title": null
+          },
           "y": {
-            "field": "demand",
-            "type": "quantitative"
+            "field": "Ancestry",
+            "type": "quantitative",
+            "title": "Genetic Share"
+          },
+          "xOffset": {
+            "field": "id"
+          },
+          "color": {
+            "field": "id",
+            "title": "A/B"
           }
-        }
-      },
-      {
-        "mark": {
-          "type": "point",
-          "color": "blue",
-          "filled": true,
-          "size": 50
         },
-        "encoding": {
-          "y": {
-            "field": "capacity",
-            "type": "quantitative"
+        "resolve": {
+          "axis": {
+            "x": "independent"
           }
         }
       }
@@ -3740,684 +3591,142 @@ if (HTMLWidgets.shinyMode) {
 },"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
+</section>
+<section id="exercise-2" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-2">Exercise 2</h2>
+<p><strong>Challenge: Identify issues with this graphic and make something better.</strong></p>
+<p><em>Issues</em></p>
+<ol type="1">
+<li><p>The y-axis runs from 0.00 to 1.25, but the data labels show totals of “478,123” and “496,234”. The y-axis is likely meant to represent units of 100,000 (so 0.50 means 50,000 touchpoints per month), but missing the “in 100,000s” label forces the audience to do mental math to figure out what the bars represent.</p></li>
+<li><p>Stacked bars are great for showing totals, but terrible for showing individual trends. Because the “Phone” segment at the bottom fluctuates, the baselines for “Chat” and “Email” are constantly moving up and down. This makes it visually impossible to tell if chat or email volumes are actually trending up or down over time.</p></li>
+<li><p>The horizontal brackets showing the yearly totals (478,123 and 496,234) have black dots that float arbitrarily and cut right through the data bars, creating visual clutter.</p></li>
+</ol>
+<p><em>Possible Improvements</em></p>
+<ol type="1">
+<li><p>label the y-axis with (in 100K) to show that 0.5 represents 50,000.</p></li>
+<li><p>Use a Line Chart with three distinct lines—one for Phone, one for Chat, and one for Email. This will show individual trend of each channel type to resolve the problem of stacked bar.</p></li>
+<li><p>Exclude the totals (478,123 and 496,234) from the new generated line graph, however, if the information is critical or necessary, it is always possible to add in the description paragraph afterwards.</p></li>
+</ol>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegawidget)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="st">{</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;$schema&quot;: &quot;https://vega.github.io/schema/vega-lite/v6.json&quot;,</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;data&quot;: {&quot;url&quot;: &quot;https://calvin-data304.netlify.app/data/swd-lets-practice-ex-2-3.json&quot;},</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;mark&quot;: &quot;line&quot;,</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;height&quot;: 200,</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;width&quot;: 400, </span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;transform&quot;: [{</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;fold&quot;: [&quot;capacity&quot;, &quot;demand&quot;],</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;as&quot;: [&quot;V1&quot;, &quot;V2&quot;]</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="st">  }],</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;encoding&quot;: {</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;x&quot;: {</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;field&quot;: &quot;date&quot;,</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;type&quot;: &quot;ordinal&quot;</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="st">  },</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;y&quot;: {</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;field&quot;: &quot;V2&quot;,</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;type&quot;: &quot;quantitative&quot;,</span></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;title&quot;: &quot;&quot;</span></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="st">    },</span></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;color&quot;: {&quot;field&quot;: &quot;V1&quot;, &quot;title&quot;: &quot;&quot;}</span></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="st">  }</span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;</span><span class="sc">|&gt;</span> <span class="fu">as_vegaspec</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegawidget)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="st">{</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;$schema&quot;: &quot;https://vega.github.io/schema/vega-lite/v6.json&quot;,</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;description&quot;: &quot;Comparison of genetic similarity scores across different kits.&quot;,</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;data&quot;: {</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;url&quot;: &quot;https://gist.githubusercontent.com/honggikim02/cdb6d790662954fd22d8d99db1c22829/raw/c288d91b37cbf45677b8c37ecd0da7bb99b03f03/customer.csv&quot;</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="st">  },</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;height&quot;: 400,</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;width&quot;: 600,</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;title&quot;: {</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;text&quot;: &quot;Monthly Customer Touchpoints by Channel (2018–2019)&quot;,</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;subtitle&quot;: &quot;Phone, Chat, and Email Touchpoint Trend&quot;,</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;fontSize&quot;: 20,</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;subtitleColor&quot;: &quot;grey&quot;,</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;subtitleFontSize&quot;: 15</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="st">  },</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;transform&quot;: [</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="st">    {</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;fold&quot;: [&quot;Phone Touchpoints&quot;, &quot;Chat Touchpoints&quot;, &quot;Email Touchpoints&quot;],</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;as&quot;: [&quot;Channel&quot;, &quot;count&quot;]</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="st">    }</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="st">  ],</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;mark&quot;: {</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;type&quot;: &quot;line&quot;, </span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;tooltip&quot;: true,</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;point&quot;: true</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="st">    },</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;encoding&quot;: {</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;x&quot;: {</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;field&quot;: &quot;Date&quot;,</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;type&quot;: &quot;ordinal&quot;,</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;axis&quot;: {</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;grid&quot;: true,</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;gridOpacity&quot;: 0.3,</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;labelAngle&quot;: 40</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="st">      }</span></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a><span class="st">    },</span></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;y&quot;: {</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;field&quot;: &quot;count&quot;,</span></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;type&quot;: &quot;quantitative&quot;,</span></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;title&quot;: &quot;Touchpoint count (in 100K)&quot;</span></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a><span class="st">    },</span></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;color&quot;: {</span></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;field&quot;: &quot;Channel&quot;,</span></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;sort&quot;: [&quot;Email Touchpoints&quot;, &quot;Phone Touchpoints&quot;, &quot;Chat Touchpoints&quot;],</span></span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;scale&quot;: {&quot;scheme&quot;: &quot;set2&quot;}</span></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="st">    }</span></span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a><span class="st">  }</span></span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a><span class="st">} </span></span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;</span> <span class="sc">|&gt;</span> <span class="fu">as_vegaspec</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: vega_lite version 6 larger than maximum major-version available:
 5.16.3</code></pre>
 </div>
 <div class="cell-output-display">
-<div id="htmlwidget-c6c65b247b821f1b7c2d" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c6c65b247b821f1b7c2d">{"x":{
+<div id="htmlwidget-7ba66aaf6d079124d379" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7ba66aaf6d079124d379">{"x":{
   "chart_spec": {
     "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+    "description": "Comparison of genetic similarity scores across different kits.",
     "data": {
-      "url": "https://calvin-data304.netlify.app/data/swd-lets-practice-ex-2-3.json"
-    },
-    "mark": "line",
-    "height": 200,
-    "width": 400,
-    "transform": [
-      {
-        "fold": [
-          "capacity",
-          "demand"
-        ],
-        "as": [
-          "V1",
-          "V2"
-        ]
-      }
-    ],
-    "encoding": {
-      "x": {
-        "field": "date",
-        "type": "ordinal"
-      },
-      "y": {
-        "field": "V2",
-        "type": "quantitative",
-        "title": ""
-      },
-      "color": {
-        "field": "V1",
-        "title": ""
-      }
-    }
-  },
-  "embed_options": {
-    "renderer": "canvas",
-    "defaultStyle": true
-  }
-},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegawidget)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="st">{</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;$schema&quot;: &quot;https://vega.github.io/schema/vega-lite/v6.json&quot;,</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;data&quot;: {&quot;url&quot;: &quot;https://calvin-data304.netlify.app/data/swd-lets-practice-ex-2-3.json&quot;},</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;mark&quot;: {&quot;type&quot;: &quot;bar&quot;},</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;height&quot;: 400,</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;width&quot;: 400,</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;transform&quot;: [</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="st">    {&quot;calculate&quot;: &quot;datum.demand - datum.capacity&quot;, &quot;as&quot;: &quot;unmet_demand&quot;},</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="st">    {</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;fold&quot;: [&quot;unmet_demand&quot;, &quot;capacity&quot;],</span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;as&quot;: [&quot;category&quot;, &quot;value&quot;]</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="st">  }],</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;encoding&quot;: {</span></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;x&quot;: {</span></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;field&quot;: &quot;date&quot;,</span></span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;type&quot;: &quot;ordinal&quot;</span></span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="st">    },</span></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;y&quot;: {</span></span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;field&quot;: &quot;value&quot;,</span></span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;type&quot;: &quot;quantitative&quot;,</span></span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;title&quot;: &quot;&quot;</span></span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="st">    },</span></span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;color&quot;: {&quot;field&quot;: &quot;category&quot;, &quot;title&quot;: &quot;&quot;}</span></span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a><span class="st">  }</span></span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
-<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;</span> <span class="sc">|&gt;</span> <span class="fu">as_vegaspec</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: vega_lite version 6 larger than maximum major-version available:
-5.16.3</code></pre>
-</div>
-<div class="cell-output-display">
-<div id="htmlwidget-dda436d0cce72d93e798" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-dda436d0cce72d93e798">{"x":{
-  "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-    "data": {
-      "url": "https://calvin-data304.netlify.app/data/swd-lets-practice-ex-2-3.json"
-    },
-    "mark": {
-      "type": "bar"
+      "url": "https://gist.githubusercontent.com/honggikim02/cdb6d790662954fd22d8d99db1c22829/raw/c288d91b37cbf45677b8c37ecd0da7bb99b03f03/customer.csv"
     },
     "height": 400,
-    "width": 400,
+    "width": 600,
+    "title": {
+      "text": "Monthly Customer Touchpoints by Channel (2018–2019)",
+      "subtitle": "Phone, Chat, and Email Touchpoint Trend",
+      "fontSize": 20,
+      "subtitleColor": "grey",
+      "subtitleFontSize": 15
+    },
     "transform": [
       {
-        "calculate": "datum.demand - datum.capacity",
-        "as": "unmet_demand"
-      },
-      {
         "fold": [
-          "unmet_demand",
-          "capacity"
+          "Phone Touchpoints",
+          "Chat Touchpoints",
+          "Email Touchpoints"
         ],
         "as": [
-          "category",
-          "value"
+          "Channel",
+          "count"
         ]
       }
     ],
-    "encoding": {
-      "x": {
-        "field": "date",
-        "type": "ordinal"
-      },
-      "y": {
-        "field": "value",
-        "type": "quantitative",
-        "title": ""
-      },
-      "color": {
-        "field": "category",
-        "title": ""
-      }
-    }
-  },
-  "embed_options": {
-    "renderer": "canvas",
-    "defaultStyle": true
-  }
-},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegawidget)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="st">{</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;$schema&quot;: &quot;https://vega.github.io/schema/vega-lite/v6.json&quot;,</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;data&quot;: {&quot;url&quot;: &quot;https://calvin-data304.netlify.app/data/swd-lets-practice-ex-2-3.json&quot;},</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;mark&quot;: {&quot;type&quot;: &quot;line&quot;, &quot;point&quot;: true},</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;height&quot;: 400,</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;width&quot;: 400,</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;transform&quot;: [</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="st">    {&quot;calculate&quot;: &quot;datum.demand - datum.capacity&quot;, &quot;as&quot;: &quot;unmet_demand&quot;},</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="st">    {</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;fold&quot;: [&quot;unmet_demand&quot;, &quot;capacity&quot;],</span></span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;as&quot;: [&quot;category&quot;, &quot;value&quot;]</span></span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="st">  }],</span></span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;encoding&quot;: {</span></span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;x&quot;: {</span></span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;field&quot;: &quot;date&quot;,</span></span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;type&quot;: &quot;ordinal&quot;</span></span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="st">    },</span></span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;y&quot;: {</span></span>
-<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;field&quot;: &quot;unmet_demand&quot;,</span></span>
-<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;type&quot;: &quot;quantitative&quot;,</span></span>
-<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;title&quot;: &quot;&quot;</span></span>
-<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a><span class="st">    }</span></span>
-<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a><span class="st">  }</span></span>
-<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
-<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;</span> <span class="sc">|&gt;</span> <span class="fu">as_vegaspec</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: vega_lite version 6 larger than maximum major-version available:
-5.16.3</code></pre>
-</div>
-<div class="cell-output-display">
-<div id="htmlwidget-27026a564c8378827d6d" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-27026a564c8378827d6d">{"x":{
-  "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-    "data": {
-      "url": "https://calvin-data304.netlify.app/data/swd-lets-practice-ex-2-3.json"
-    },
     "mark": {
       "type": "line",
+      "tooltip": true,
       "point": true
     },
-    "height": 400,
-    "width": 400,
-    "transform": [
-      {
-        "calculate": "datum.demand - datum.capacity",
-        "as": "unmet_demand"
-      },
-      {
-        "fold": [
-          "unmet_demand",
-          "capacity"
-        ],
-        "as": [
-          "category",
-          "value"
-        ]
-      }
-    ],
     "encoding": {
       "x": {
-        "field": "date",
-        "type": "ordinal"
-      },
-      "y": {
-        "field": "unmet_demand",
-        "type": "quantitative",
-        "title": ""
-      }
-    }
-  },
-  "embed_options": {
-    "renderer": "canvas",
-    "defaultStyle": true
-  }
-},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
-</section>
-<section id="exercise-2" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-2">Exercise 2</h3>
-<p><em>a</em></p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegawidget)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="st">{</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;$schema&quot;: &quot;https://vega.github.io/schema/vega-lite/v6.json&quot;,</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;width&quot;: 600,</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;height&quot;: 400,</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;data&quot;: {</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;url&quot;: &quot;https://cdn.jsdelivr.net/npm/vega-datasets@2.8.0/data/jobs.json&quot;</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="st">  },</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;mark&quot;: {</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;type&quot;: &quot;line&quot;,</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;point&quot;: true,</span></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;tooltip&quot;: true</span></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="st">  },</span></span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;encoding&quot;: {</span></span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;x&quot;: {</span></span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;field&quot;: &quot;year&quot;,</span></span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;type&quot;: &quot;ordinal&quot;</span></span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a><span class="st">          },</span></span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;y&quot;: {</span></span>
-<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;aggregate&quot;: &quot;sum&quot;,</span></span>
-<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;field&quot;: &quot;perc&quot;,</span></span>
-<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;type&quot;: &quot;quantitative&quot;,</span></span>
-<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;scale&quot;: {&quot;domain&quot;: [0, 1]}</span></span>
-<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a><span class="st">    },</span></span>
-<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a><span class="st">    </span></span>
-<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;color&quot;: {</span></span>
-<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;field&quot;: &quot;sex&quot;,</span></span>
-<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;type&quot;: &quot;nominal&quot;,</span></span>
-<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;title&quot;: &quot;Gender&quot;</span></span>
-<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a><span class="st">          }</span></span>
-<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a><span class="st">  }</span></span>
-<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
-<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;</span> <span class="sc">|&gt;</span> <span class="fu">as_vegaspec</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: vega_lite version 6 larger than maximum major-version available:
-5.16.3</code></pre>
-</div>
-<div class="cell-output-display">
-<div id="htmlwidget-9ec89be0a3678ea1eb20" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9ec89be0a3678ea1eb20">{"x":{
-  "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-    "width": 600,
-    "height": 400,
-    "data": {
-      "url": "https://cdn.jsdelivr.net/npm/vega-datasets@2.8.0/data/jobs.json"
-    },
-    "mark": {
-      "type": "line",
-      "point": true,
-      "tooltip": true
-    },
-    "encoding": {
-      "x": {
-        "field": "year",
-        "type": "ordinal"
-      },
-      "y": {
-        "aggregate": "sum",
-        "field": "perc",
-        "type": "quantitative",
-        "scale": {
-          "domain": [
-            0,
-            1
-          ]
+        "field": "Date",
+        "type": "ordinal",
+        "axis": {
+          "grid": true,
+          "gridOpacity": 0.3,
+          "labelAngle": 40
         }
+      },
+      "y": {
+        "field": "count",
+        "type": "quantitative",
+        "title": "Touchpoint count (in 100K)"
       },
       "color": {
-        "field": "sex",
-        "type": "nominal",
-        "title": "Gender"
-      }
-    }
-  },
-  "embed_options": {
-    "renderer": "canvas",
-    "defaultStyle": true
-  }
-},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
-<p>The graph above shows what the “perc” means in the dataset. The graph shows total percentage (perc) of male and female throughout all occupations. The line graph shows that the percentage of male decrease from near 1.0 to 0.5 when the rate of female increased from 0 to 0.5 in span of 150 years. This shows the change in society where it was male-dominant to society pursuing gender equality.</p>
-<p><em>b</em></p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegawidget)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="st">{</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;$schema&quot;: &quot;https://vega.github.io/schema/vega-lite/v6.json&quot;,</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;title&quot;: &quot;Percent of Men vs. Women in Various Jobs&quot;,</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;data&quot;: {</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;url&quot;: &quot;https://cdn.jsdelivr.net/npm/vega-datasets@2.8.0/data/jobs.json&quot;</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="st">  },</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;transform&quot;: [</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="st">    {&quot;filter&quot;: {</span></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;field&quot;: &quot;year&quot;,</span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;oneOf&quot;: [1900, 1950, 1980, 2000]}},</span></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="st">    {&quot;pivot&quot;: &quot;sex&quot;,</span></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;value&quot;: &quot;perc&quot;,</span></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;groupby&quot;: [&quot;year&quot;, &quot;job&quot;]}</span></span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="st">  ],</span></span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;facet&quot;: {</span></span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;field&quot;: &quot;year&quot;,</span></span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;type&quot;: &quot;ordinal&quot;,</span></span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;title&quot;: &quot;Year&quot;</span></span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a><span class="st">  },</span></span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;spec&quot;: {</span></span>
-<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;width&quot;: 200,</span></span>
-<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;height&quot;: 200,</span></span>
-<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;mark&quot;: {</span></span>
-<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;type&quot;: &quot;circle&quot;,</span></span>
-<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;size&quot;: 60,</span></span>
-<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;opacity&quot;: 0.7,</span></span>
-<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;tooltip&quot;: true</span></span>
-<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a><span class="st">    },</span></span>
-<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;encoding&quot;: {</span></span>
-<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;x&quot;: {</span></span>
-<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;field&quot;: &quot;men&quot;,</span></span>
-<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;type&quot;: &quot;quantitative&quot;,</span></span>
-<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;title&quot;: &quot;Percent of Men&quot;,</span></span>
-<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;axis&quot;: {&quot;format&quot;: &quot;.0%&quot;}</span></span>
-<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a><span class="st">      },</span></span>
-<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;y&quot;: {</span></span>
-<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;field&quot;: &quot;women&quot;,</span></span>
-<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;type&quot;: &quot;quantitative&quot;,</span></span>
-<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;title&quot;: &quot;Percent of Women&quot;,</span></span>
-<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;axis&quot;: {&quot;format&quot;: &quot;.0%&quot;}</span></span>
-<span id="cb15-47"><a href="#cb15-47" aria-hidden="true" tabindex="-1"></a><span class="st">      }</span></span>
-<span id="cb15-48"><a href="#cb15-48" aria-hidden="true" tabindex="-1"></a><span class="st">    }</span></span>
-<span id="cb15-49"><a href="#cb15-49" aria-hidden="true" tabindex="-1"></a><span class="st">  }</span></span>
-<span id="cb15-50"><a href="#cb15-50" aria-hidden="true" tabindex="-1"></a><span class="st">}&#39;</span><span class="sc">|&gt;</span> <span class="fu">as_vegaspec</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: vega_lite version 6 larger than maximum major-version available:
-5.16.3</code></pre>
-</div>
-<div class="cell-output-display">
-<div id="htmlwidget-1db1afee2076cc6a6700" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1db1afee2076cc6a6700">{"x":{
-  "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-    "title": "Percent of Men vs. Women in Various Jobs",
-    "data": {
-      "url": "https://cdn.jsdelivr.net/npm/vega-datasets@2.8.0/data/jobs.json"
-    },
-    "transform": [
-      {
-        "filter": {
-          "field": "year",
-          "oneOf": [
-            1900,
-            1950,
-            1980,
-            2000
-          ]
-        }
-      },
-      {
-        "pivot": "sex",
-        "value": "perc",
-        "groupby": [
-          "year",
-          "job"
-        ]
-      }
-    ],
-    "facet": {
-      "field": "year",
-      "type": "ordinal",
-      "title": "Year"
-    },
-    "spec": {
-      "width": 200,
-      "height": 200,
-      "mark": {
-        "type": "circle",
-        "size": 60,
-        "opacity": 0.7,
-        "tooltip": true
-      },
-      "encoding": {
-        "x": {
-          "field": "men",
-          "type": "quantitative",
-          "title": "Percent of Men",
-          "axis": {
-            "format": ".0%"
-          }
-        },
-        "y": {
-          "field": "women",
-          "type": "quantitative",
-          "title": "Percent of Women",
-          "axis": {
-            "format": ".0%"
-          }
-        }
-      }
-    }
-  },
-  "embed_options": {
-    "renderer": "canvas",
-    "defaultStyle": true
-  }
-},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
-<p><em>c</em></p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegawidget)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="st">{</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;$schema&quot;: &quot;https://vega.github.io/schema/vega-lite/v6.json&quot;,</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;title&quot;: &quot;True Percent of Men vs. Women in Various Jobs&quot;,</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;data&quot;: {</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;url&quot;: &quot;https://cdn.jsdelivr.net/npm/vega-datasets@2.8.0/data/jobs.json&quot;</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="st">  },</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;transform&quot;: [</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="st">    {&quot;filter&quot;: {</span></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;field&quot;: &quot;year&quot;,</span></span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;oneOf&quot;: [1900, 1950, 1980, 2000]}</span></span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="st">    },</span></span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="st">    {&quot;joinaggregate&quot;: [{</span></span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;op&quot;: &quot;sum&quot;,</span></span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;field&quot;: &quot;count&quot;,</span></span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;as&quot;: &quot;total_sex_count&quot;}],</span></span>
-<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;groupby&quot;: [&quot;year&quot;, &quot;sex&quot;]</span></span>
-<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a><span class="st">    },</span></span>
-<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a><span class="st">    {&quot;calculate&quot;: &quot;datum.count / datum.total_sex_count&quot;,</span></span>
-<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;as&quot;: &quot;true_perc&quot;},</span></span>
-<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a><span class="st">    {&quot;pivot&quot;: &quot;sex&quot;,</span></span>
-<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;value&quot;: &quot;true_perc&quot;,</span></span>
-<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;groupby&quot;: [&quot;year&quot;, &quot;job&quot;]</span></span>
-<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a><span class="st">    }</span></span>
-<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a><span class="st">  ],</span></span>
-<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;facet&quot;: {</span></span>
-<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;field&quot;: &quot;year&quot;,</span></span>
-<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;type&quot;: &quot;ordinal&quot;,</span></span>
-<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;title&quot;: &quot;Year&quot;</span></span>
-<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a><span class="st">  },</span></span>
-<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;spec&quot;: {</span></span>
-<span id="cb17-38"><a href="#cb17-38" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;width&quot;: 300,</span></span>
-<span id="cb17-39"><a href="#cb17-39" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;height&quot;: 300,</span></span>
-<span id="cb17-40"><a href="#cb17-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-41"><a href="#cb17-41" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;mark&quot;: {</span></span>
-<span id="cb17-42"><a href="#cb17-42" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;type&quot;: &quot;circle&quot;,</span></span>
-<span id="cb17-43"><a href="#cb17-43" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;size&quot;: 60,</span></span>
-<span id="cb17-44"><a href="#cb17-44" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;opacity&quot;: 0.7</span></span>
-<span id="cb17-45"><a href="#cb17-45" aria-hidden="true" tabindex="-1"></a><span class="st">    },</span></span>
-<span id="cb17-46"><a href="#cb17-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-47"><a href="#cb17-47" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;encoding&quot;: {</span></span>
-<span id="cb17-48"><a href="#cb17-48" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;x&quot;: {</span></span>
-<span id="cb17-49"><a href="#cb17-49" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;field&quot;: &quot;men&quot;,</span></span>
-<span id="cb17-50"><a href="#cb17-50" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;type&quot;: &quot;quantitative&quot;,</span></span>
-<span id="cb17-51"><a href="#cb17-51" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;title&quot;: &quot;Percent of Men (out of all men)&quot;,</span></span>
-<span id="cb17-52"><a href="#cb17-52" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;axis&quot;: {</span></span>
-<span id="cb17-53"><a href="#cb17-53" aria-hidden="true" tabindex="-1"></a><span class="st">          &quot;format&quot;: &quot;.0%&quot;</span></span>
-<span id="cb17-54"><a href="#cb17-54" aria-hidden="true" tabindex="-1"></a><span class="st">        }</span></span>
-<span id="cb17-55"><a href="#cb17-55" aria-hidden="true" tabindex="-1"></a><span class="st">      },</span></span>
-<span id="cb17-56"><a href="#cb17-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-57"><a href="#cb17-57" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;y&quot;: {</span></span>
-<span id="cb17-58"><a href="#cb17-58" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;field&quot;: &quot;women&quot;,</span></span>
-<span id="cb17-59"><a href="#cb17-59" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;type&quot;: &quot;quantitative&quot;,</span></span>
-<span id="cb17-60"><a href="#cb17-60" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;title&quot;: &quot;Percent of Women (out of all women)&quot;,</span></span>
-<span id="cb17-61"><a href="#cb17-61" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;axis&quot;: {</span></span>
-<span id="cb17-62"><a href="#cb17-62" aria-hidden="true" tabindex="-1"></a><span class="st">          &quot;format&quot;: &quot;.0%&quot;</span></span>
-<span id="cb17-63"><a href="#cb17-63" aria-hidden="true" tabindex="-1"></a><span class="st">        }</span></span>
-<span id="cb17-64"><a href="#cb17-64" aria-hidden="true" tabindex="-1"></a><span class="st">      },</span></span>
-<span id="cb17-65"><a href="#cb17-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-66"><a href="#cb17-66" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;tooltip&quot;: [</span></span>
-<span id="cb17-67"><a href="#cb17-67" aria-hidden="true" tabindex="-1"></a><span class="st">        {&quot;field&quot;: &quot;job&quot;,</span></span>
-<span id="cb17-68"><a href="#cb17-68" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;type&quot;: &quot;nominal&quot;,</span></span>
-<span id="cb17-69"><a href="#cb17-69" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;title&quot;: &quot;Job&quot;</span></span>
-<span id="cb17-70"><a href="#cb17-70" aria-hidden="true" tabindex="-1"></a><span class="st">        },</span></span>
-<span id="cb17-71"><a href="#cb17-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-72"><a href="#cb17-72" aria-hidden="true" tabindex="-1"></a><span class="st">        {&quot;field&quot;: &quot;men&quot;,</span></span>
-<span id="cb17-73"><a href="#cb17-73" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;type&quot;: &quot;quantitative&quot;,</span></span>
-<span id="cb17-74"><a href="#cb17-74" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;title&quot;: &quot;Men&quot;,</span></span>
-<span id="cb17-75"><a href="#cb17-75" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;format&quot;: &quot;.1%&quot;</span></span>
-<span id="cb17-76"><a href="#cb17-76" aria-hidden="true" tabindex="-1"></a><span class="st">        },</span></span>
-<span id="cb17-77"><a href="#cb17-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-78"><a href="#cb17-78" aria-hidden="true" tabindex="-1"></a><span class="st">        {&quot;field&quot;: &quot;women&quot;,</span></span>
-<span id="cb17-79"><a href="#cb17-79" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;type&quot;: &quot;quantitative&quot;,</span></span>
-<span id="cb17-80"><a href="#cb17-80" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;title&quot;: &quot;Women&quot;,</span></span>
-<span id="cb17-81"><a href="#cb17-81" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;format&quot;: &quot;.1%&quot;</span></span>
-<span id="cb17-82"><a href="#cb17-82" aria-hidden="true" tabindex="-1"></a><span class="st">        }</span></span>
-<span id="cb17-83"><a href="#cb17-83" aria-hidden="true" tabindex="-1"></a><span class="st">      ]</span></span>
-<span id="cb17-84"><a href="#cb17-84" aria-hidden="true" tabindex="-1"></a><span class="st">    }</span></span>
-<span id="cb17-85"><a href="#cb17-85" aria-hidden="true" tabindex="-1"></a><span class="st">  }</span></span>
-<span id="cb17-86"><a href="#cb17-86" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
-<span id="cb17-87"><a href="#cb17-87" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;</span> <span class="sc">|&gt;</span> <span class="fu">as_vegaspec</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: vega_lite version 6 larger than maximum major-version available:
-5.16.3</code></pre>
-</div>
-<div class="cell-output-display">
-<div id="htmlwidget-a478d2351d6122748610" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a478d2351d6122748610">{"x":{
-  "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-    "title": "True Percent of Men vs. Women in Various Jobs",
-    "data": {
-      "url": "https://cdn.jsdelivr.net/npm/vega-datasets@2.8.0/data/jobs.json"
-    },
-    "transform": [
-      {
-        "filter": {
-          "field": "year",
-          "oneOf": [
-            1900,
-            1950,
-            1980,
-            2000
-          ]
-        }
-      },
-      {
-        "joinaggregate": [
-          {
-            "op": "sum",
-            "field": "count",
-            "as": "total_sex_count"
-          }
+        "field": "Channel",
+        "sort": [
+          "Email Touchpoints",
+          "Phone Touchpoints",
+          "Chat Touchpoints"
         ],
-        "groupby": [
-          "year",
-          "sex"
-        ]
-      },
-      {
-        "calculate": "datum.count / datum.total_sex_count",
-        "as": "true_perc"
-      },
-      {
-        "pivot": "sex",
-        "value": "true_perc",
-        "groupby": [
-          "year",
-          "job"
-        ]
-      }
-    ],
-    "facet": {
-      "field": "year",
-      "type": "ordinal",
-      "title": "Year"
-    },
-    "spec": {
-      "width": 300,
-      "height": 300,
-      "mark": {
-        "type": "circle",
-        "size": 60,
-        "opacity": 0.7
-      },
-      "encoding": {
-        "x": {
-          "field": "men",
-          "type": "quantitative",
-          "title": "Percent of Men (out of all men)",
-          "axis": {
-            "format": ".0%"
-          }
-        },
-        "y": {
-          "field": "women",
-          "type": "quantitative",
-          "title": "Percent of Women (out of all women)",
-          "axis": {
-            "format": ".0%"
-          }
-        },
-        "tooltip": [
-          {
-            "field": "job",
-            "type": "nominal",
-            "title": "Job"
-          },
-          {
-            "field": "men",
-            "type": "quantitative",
-            "title": "Men",
-            "format": ".1%"
-          },
-          {
-            "field": "women",
-            "type": "quantitative",
-            "title": "Women",
-            "format": ".1%"
-          }
-        ]
+        "scale": {
+          "scheme": "set2"
+        }
       }
     }
   },
@@ -4429,189 +3738,14 @@ if (HTMLWidgets.shinyMode) {
 </div>
 </div>
 </section>
-<section id="exercise-3" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-3">Exercise 3</h3>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegawidget)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="st">{</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;$schema&quot;: &quot;https://vega.github.io/schema/vega-lite/v6.json&quot;,</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;title&quot;: {</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;text&quot;: &quot;Gas Price Trends by Region&quot;,</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;subtitle&quot;: &quot;Prices in US $ per gallon (1991-2016)&quot;</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="st">  },</span></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;data&quot;: {</span></span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;url&quot;: &quot;https://gist.githubusercontent.com/honggikim02/03110b3ff72b77858064f84f36ee2c42/raw/137ed6410fd4021801b29c3e81b3c46e3f623a33/pump_gas_price.csv&quot;</span></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="st">  },</span></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;transform&quot;: [</span></span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="st">    {</span></span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;lookup&quot;: &quot;country&quot;,</span></span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;from&quot;: {</span></span>
-<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;data&quot;: {</span></span>
-<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a><span class="st">          &quot;url&quot;: &quot;https://raw.githubusercontent.com/lukes/ISO-3166-Countries-with-Regional-Codes/master/all/all.csv&quot;</span></span>
-<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a><span class="st">        },</span></span>
-<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;key&quot;: &quot;name&quot;,</span></span>
-<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;fields&quot;: [&quot;region&quot;]</span></span>
-<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a><span class="st">      }</span></span>
-<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a><span class="st">    },</span></span>
-<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a><span class="st">    {</span></span>
-<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;filter&quot;: &quot;datum.region != null&quot;</span></span>
-<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a><span class="st">    },</span></span>
-<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a><span class="st">    {</span></span>
-<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;fold&quot;: [</span></span>
-<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;1991&quot;, &quot;1992&quot;, &quot;1993&quot;, &quot;1994&quot;, &quot;1995&quot;, &quot;1996&quot;, &quot;1998&quot;, &quot;2000&quot;, </span></span>
-<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;2002&quot;, &quot;2004&quot;, &quot;2006&quot;, &quot;2008&quot;, &quot;2010&quot;, &quot;2012&quot;, &quot;2014&quot;, &quot;2016&quot;</span></span>
-<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a><span class="st">      ],</span></span>
-<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;as&quot;: [&quot;year&quot;, &quot;price&quot;]</span></span>
-<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a><span class="st">    }</span></span>
-<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a><span class="st">  ],</span></span>
-<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;facet&quot;: {</span></span>
-<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;field&quot;: &quot;region&quot;,</span></span>
-<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;type&quot;: &quot;nominal&quot;,</span></span>
-<span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;columns&quot;: 4</span></span>
-<span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a><span class="st">  },</span></span>
-<span id="cb19-39"><a href="#cb19-39" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;spec&quot;: {</span></span>
-<span id="cb19-40"><a href="#cb19-40" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;width&quot;: 350,</span></span>
-<span id="cb19-41"><a href="#cb19-41" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;height&quot;: 200,</span></span>
-<span id="cb19-42"><a href="#cb19-42" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;mark&quot;: {&quot;type&quot;: &quot;point&quot;, &quot;tooltip&quot;: true},</span></span>
-<span id="cb19-43"><a href="#cb19-43" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;encoding&quot;: {</span></span>
-<span id="cb19-44"><a href="#cb19-44" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;x&quot;: {</span></span>
-<span id="cb19-45"><a href="#cb19-45" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;field&quot;: &quot;year&quot;,</span></span>
-<span id="cb19-46"><a href="#cb19-46" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;type&quot;: &quot;ordinal&quot;,</span></span>
-<span id="cb19-47"><a href="#cb19-47" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;title&quot;: &quot;Year&quot;</span></span>
-<span id="cb19-48"><a href="#cb19-48" aria-hidden="true" tabindex="-1"></a><span class="st">      },</span></span>
-<span id="cb19-49"><a href="#cb19-49" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;y&quot;: {</span></span>
-<span id="cb19-50"><a href="#cb19-50" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;field&quot;: &quot;price&quot;,</span></span>
-<span id="cb19-51"><a href="#cb19-51" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;type&quot;: &quot;quantitative&quot;,</span></span>
-<span id="cb19-52"><a href="#cb19-52" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;title&quot;: &quot;Gas Price (US $ / Gallon)&quot;</span></span>
-<span id="cb19-53"><a href="#cb19-53" aria-hidden="true" tabindex="-1"></a><span class="st">      },</span></span>
-<span id="cb19-54"><a href="#cb19-54" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;color&quot;: {</span></span>
-<span id="cb19-55"><a href="#cb19-55" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;field&quot;: &quot;country&quot;,</span></span>
-<span id="cb19-56"><a href="#cb19-56" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;type&quot;: &quot;nominal&quot;,</span></span>
-<span id="cb19-57"><a href="#cb19-57" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;title&quot;: &quot;Region&quot;</span></span>
-<span id="cb19-58"><a href="#cb19-58" aria-hidden="true" tabindex="-1"></a><span class="st">      },</span></span>
-<span id="cb19-59"><a href="#cb19-59" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;tooltip&quot;: [</span></span>
-<span id="cb19-60"><a href="#cb19-60" aria-hidden="true" tabindex="-1"></a><span class="st">        {&quot;field&quot;: &quot;country&quot;, &quot;title&quot;: &quot;Country&quot;},</span></span>
-<span id="cb19-61"><a href="#cb19-61" aria-hidden="true" tabindex="-1"></a><span class="st">        {&quot;field&quot;: &quot;year&quot;, &quot;title&quot;: &quot;Year&quot;},</span></span>
-<span id="cb19-62"><a href="#cb19-62" aria-hidden="true" tabindex="-1"></a><span class="st">        {&quot;field&quot;: &quot;price&quot;, &quot;title&quot;: &quot;Price&quot;,&quot;format&quot;:&quot;$.2f&quot;}</span></span>
-<span id="cb19-63"><a href="#cb19-63" aria-hidden="true" tabindex="-1"></a><span class="st">      ]</span></span>
-<span id="cb19-64"><a href="#cb19-64" aria-hidden="true" tabindex="-1"></a><span class="st">    }</span></span>
-<span id="cb19-65"><a href="#cb19-65" aria-hidden="true" tabindex="-1"></a><span class="st">  }</span></span>
-<span id="cb19-66"><a href="#cb19-66" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
-<span id="cb19-67"><a href="#cb19-67" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;</span><span class="sc">|&gt;</span> <span class="fu">as_vegaspec</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: vega_lite version 6 larger than maximum major-version available:
-5.16.3</code></pre>
-</div>
-<div class="cell-output-display">
-<div id="htmlwidget-2e1557a7f5fc03dc6055" style="width:auto;height:auto;" class="vegawidget-vl5 html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2e1557a7f5fc03dc6055">{"x":{
-  "chart_spec": {
-    "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
-    "title": {
-      "text": "Gas Price Trends by Region",
-      "subtitle": "Prices in US $ per gallon (1991-2016)"
-    },
-    "data": {
-      "url": "https://gist.githubusercontent.com/honggikim02/03110b3ff72b77858064f84f36ee2c42/raw/137ed6410fd4021801b29c3e81b3c46e3f623a33/pump_gas_price.csv"
-    },
-    "transform": [
-      {
-        "lookup": "country",
-        "from": {
-          "data": {
-            "url": "https://raw.githubusercontent.com/lukes/ISO-3166-Countries-with-Regional-Codes/master/all/all.csv"
-          },
-          "key": "name",
-          "fields": [
-            "region"
-          ]
-        }
-      },
-      {
-        "filter": "datum.region != null"
-      },
-      {
-        "fold": [
-          "1991",
-          "1992",
-          "1993",
-          "1994",
-          "1995",
-          "1996",
-          "1998",
-          "2000",
-          "2002",
-          "2004",
-          "2006",
-          "2008",
-          "2010",
-          "2012",
-          "2014",
-          "2016"
-        ],
-        "as": [
-          "year",
-          "price"
-        ]
-      }
-    ],
-    "facet": {
-      "field": "region",
-      "type": "nominal",
-      "columns": 4
-    },
-    "spec": {
-      "width": 350,
-      "height": 200,
-      "mark": {
-        "type": "point",
-        "tooltip": true
-      },
-      "encoding": {
-        "x": {
-          "field": "year",
-          "type": "ordinal",
-          "title": "Year"
-        },
-        "y": {
-          "field": "price",
-          "type": "quantitative",
-          "title": "Gas Price (US $ / Gallon)"
-        },
-        "color": {
-          "field": "country",
-          "type": "nominal",
-          "title": "Region"
-        },
-        "tooltip": [
-          {
-            "field": "country",
-            "title": "Country"
-          },
-          {
-            "field": "year",
-            "title": "Year"
-          },
-          {
-            "field": "price",
-            "title": "Price",
-            "format": "$.2f"
-          }
-        ]
-      }
-    }
-  },
-  "embed_options": {
-    "renderer": "canvas",
-    "defaultStyle": true
-  }
-},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
+<section id="exercise-3" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-3">Exercise 3</h2>
+</section>
+<section id="exercise-4" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-4">Exercise 4</h2>
+<p>dataset: <a href="https://www.kaggle.com/datasets/jayjoshi37/smartphone-usage-and-addiction-prediction?resource=download">Where I downloaded</a> <a href="https://gist.githubusercontent.com/honggikim02/0d387e86e18464f71f56df29af99b9b8/raw/53a871166ea997c932b3874e6c1a2786a3f0b208/smartphoneaddiction.csv">Dataset</a></p>
+<!-- -->
+
 </section>
 
 </main>
@@ -4686,6 +3820,57 @@ if (HTMLWidgets.shinyMode) {
         container: window.document.getElementById('quarto-embedded-source-code-modal')
       });
       clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
@@ -5015,7 +4200,175 @@ if (HTMLWidgets.shinyMode) {
       }
     }
   });
-  </script>
+  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;Final Portfolio&quot;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> &quot;Hong Gi Kim&quot;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> </span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">    output-file: &quot;index&quot;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="an">embed-resources:</span><span class="co"> true</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="an">code-fold:</span><span class="co"> true</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="an">code-tools:</span><span class="co"> true</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 1</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegawidget)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="st">{</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;$schema&quot;: &quot;https://vega.github.io/schema/vega-lite/v6.json&quot;,</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;data&quot;: {</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;url&quot;: &quot;https://calvin-data304.netlify.app/data/twins-genetics-wide.json&quot;</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="st">  },</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="st"> &quot;title&quot;: { </span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;text&quot;: &quot;Comparing Genetic Shares of Pairs of Twin&quot;,</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;fontSize&quot;: 20,</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;anchor&quot;: &quot;middle&quot;,</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;subtitle&quot;: &quot;Using Ancestry kit&quot;,</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;subtitleColor&quot;: &quot;grey&quot;,</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;subtitleFontSize&quot;: 15},</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;vconcat&quot;:[</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="st">    {</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="st">     &quot;height&quot;: 200,</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="st">     &quot;width&quot;: 200,</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="st">  </span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="st">     &quot;title&quot;: {</span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="st">     &quot;text&quot;: &quot;Regions&quot;,</span></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a><span class="st">     &quot;orient&quot;: &quot;bottom&quot;,</span></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a><span class="st">     &quot;anchor&quot;: &quot;middle&quot;,</span></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a><span class="st">     &quot;offset&quot;: 15}, </span></span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a><span class="st">     &quot;mark&quot;: {&quot;type&quot;: &quot;bar&quot;, &quot;tooltip&quot;: true},</span></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a><span class="st">     &quot;encoding&quot;: {</span></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;facet&quot;: {</span></span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a><span class="st">          &quot;field&quot;: &quot;pair&quot;,</span></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a><span class="st">          &quot;columns&quot;: 3,</span></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a><span class="st">          &quot;title&quot;: null,</span></span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a><span class="st">          &quot;header&quot;: {</span></span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a><span class="st">            &quot;labelExpr&quot;: &quot;</span><span class="sc">\&#39;</span><span class="st">Pair </span><span class="sc">\&#39;</span><span class="st"> + datum.value&quot; </span></span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a><span class="st">          }</span></span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a><span class="st">        },</span></span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;x&quot;: {</span></span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a><span class="st">          &quot;field&quot;: &quot;region&quot;,</span></span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a><span class="st">          &quot;type&quot;: &quot;nominal&quot;,</span></span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a><span class="st">          &quot;axis&quot;: {&quot;labelAngle&quot;:45},</span></span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a><span class="st">          &quot;title&quot;: null</span></span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a><span class="st">        },</span></span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;y&quot;:{</span></span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a><span class="st">          &quot;field&quot;: &quot;Ancestry&quot;,</span></span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a><span class="st">          &quot;type&quot;: &quot;quantitative&quot;,</span></span>
+<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a><span class="st">          &quot;title&quot;: &quot;Genetic Share&quot;</span></span>
+<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a><span class="st">        },</span></span>
+<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;xOffset&quot;: {</span></span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a><span class="st">          &quot;field&quot;: &quot;id&quot;</span></span>
+<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a><span class="st">        },</span></span>
+<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;color&quot;: {</span></span>
+<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a><span class="st">          &quot;field&quot;: &quot;id&quot;,</span></span>
+<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a><span class="st">          &quot;title&quot;: &quot;A/B&quot;</span></span>
+<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a><span class="st">        }</span></span>
+<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a><span class="st">      },</span></span>
+<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;resolve&quot;: {</span></span>
+<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;axis&quot;:{&quot;x&quot;: &quot;independent&quot;}</span></span>
+<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a><span class="st">      }</span></span>
+<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a><span class="st">    }</span></span>
+<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a><span class="st">  ]</span></span>
+<span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;</span><span class="sc">|&gt;</span> <span class="fu">as_vegaspec</span>()</span>
+<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-86"><a href="#cb5-86" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 2</span></span>
+<span id="cb5-87"><a href="#cb5-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-88"><a href="#cb5-88" aria-hidden="true" tabindex="-1"></a>**Challenge: Identify issues with this graphic and make something better.**</span>
+<span id="cb5-89"><a href="#cb5-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-90"><a href="#cb5-90" aria-hidden="true" tabindex="-1"></a>*Issues*</span>
+<span id="cb5-91"><a href="#cb5-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-92"><a href="#cb5-92" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>The y-axis runs from 0.00 to 1.25, but the data labels show totals of &quot;478,123&quot; and &quot;496,234&quot;. The y-axis is likely meant to represent units of 100,000 (so 0.50 means 50,000 touchpoints per month), but missing the &quot;in 100,000s&quot; label forces the audience to do mental math to figure out what the bars represent.</span>
+<span id="cb5-93"><a href="#cb5-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-94"><a href="#cb5-94" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Stacked bars are great for showing totals, but terrible for showing individual trends. Because the &quot;Phone&quot; segment at the bottom fluctuates, the baselines for &quot;Chat&quot; and &quot;Email&quot; are constantly moving up and down. This makes it visually impossible to tell if chat or email volumes are actually trending up or down over time.</span>
+<span id="cb5-95"><a href="#cb5-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-96"><a href="#cb5-96" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>The horizontal brackets showing the yearly totals (478,123 and 496,234) have black dots that float arbitrarily and cut right through the data bars, creating visual clutter.</span>
+<span id="cb5-97"><a href="#cb5-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-98"><a href="#cb5-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-99"><a href="#cb5-99" aria-hidden="true" tabindex="-1"></a>*Possible Improvements*</span>
+<span id="cb5-100"><a href="#cb5-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-101"><a href="#cb5-101" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>label the y-axis with (in 100K) to show that 0.5 represents 50,000.</span>
+<span id="cb5-102"><a href="#cb5-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-103"><a href="#cb5-103" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Use a Line Chart with three distinct lines—one for Phone, one for Chat, and one for Email. This will show individual trend of each channel type to resolve the problem of stacked bar.</span>
+<span id="cb5-104"><a href="#cb5-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-105"><a href="#cb5-105" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Exclude the totals (478,123 and 496,234) from the new generated line graph, however, if the information is critical or necessary, it is always possible to add in the description paragraph afterwards.</span>
+<span id="cb5-106"><a href="#cb5-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-109"><a href="#cb5-109" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb5-110"><a href="#cb5-110" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vegawidget)</span>
+<span id="cb5-111"><a href="#cb5-111" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;</span></span>
+<span id="cb5-112"><a href="#cb5-112" aria-hidden="true" tabindex="-1"></a><span class="st">{</span></span>
+<span id="cb5-113"><a href="#cb5-113" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;$schema&quot;: &quot;https://vega.github.io/schema/vega-lite/v6.json&quot;,</span></span>
+<span id="cb5-114"><a href="#cb5-114" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;description&quot;: &quot;Comparison of genetic similarity scores across different kits.&quot;,</span></span>
+<span id="cb5-115"><a href="#cb5-115" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;data&quot;: {</span></span>
+<span id="cb5-116"><a href="#cb5-116" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;url&quot;: &quot;https://gist.githubusercontent.com/honggikim02/cdb6d790662954fd22d8d99db1c22829/raw/c288d91b37cbf45677b8c37ecd0da7bb99b03f03/customer.csv&quot;</span></span>
+<span id="cb5-117"><a href="#cb5-117" aria-hidden="true" tabindex="-1"></a><span class="st">  },</span></span>
+<span id="cb5-118"><a href="#cb5-118" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;height&quot;: 400,</span></span>
+<span id="cb5-119"><a href="#cb5-119" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;width&quot;: 600,</span></span>
+<span id="cb5-120"><a href="#cb5-120" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;title&quot;: {</span></span>
+<span id="cb5-121"><a href="#cb5-121" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;text&quot;: &quot;Monthly Customer Touchpoints by Channel (2018–2019)&quot;,</span></span>
+<span id="cb5-122"><a href="#cb5-122" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;subtitle&quot;: &quot;Phone, Chat, and Email Touchpoint Trend&quot;,</span></span>
+<span id="cb5-123"><a href="#cb5-123" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;fontSize&quot;: 20,</span></span>
+<span id="cb5-124"><a href="#cb5-124" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;subtitleColor&quot;: &quot;grey&quot;,</span></span>
+<span id="cb5-125"><a href="#cb5-125" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;subtitleFontSize&quot;: 15</span></span>
+<span id="cb5-126"><a href="#cb5-126" aria-hidden="true" tabindex="-1"></a><span class="st">  },</span></span>
+<span id="cb5-127"><a href="#cb5-127" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;transform&quot;: [</span></span>
+<span id="cb5-128"><a href="#cb5-128" aria-hidden="true" tabindex="-1"></a><span class="st">    {</span></span>
+<span id="cb5-129"><a href="#cb5-129" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;fold&quot;: [&quot;Phone Touchpoints&quot;, &quot;Chat Touchpoints&quot;, &quot;Email Touchpoints&quot;],</span></span>
+<span id="cb5-130"><a href="#cb5-130" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;as&quot;: [&quot;Channel&quot;, &quot;count&quot;]</span></span>
+<span id="cb5-131"><a href="#cb5-131" aria-hidden="true" tabindex="-1"></a><span class="st">    }</span></span>
+<span id="cb5-132"><a href="#cb5-132" aria-hidden="true" tabindex="-1"></a><span class="st">  ],</span></span>
+<span id="cb5-133"><a href="#cb5-133" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;mark&quot;: {</span></span>
+<span id="cb5-134"><a href="#cb5-134" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;type&quot;: &quot;line&quot;, </span></span>
+<span id="cb5-135"><a href="#cb5-135" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;tooltip&quot;: true,</span></span>
+<span id="cb5-136"><a href="#cb5-136" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;point&quot;: true</span></span>
+<span id="cb5-137"><a href="#cb5-137" aria-hidden="true" tabindex="-1"></a><span class="st">    },</span></span>
+<span id="cb5-138"><a href="#cb5-138" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;encoding&quot;: {</span></span>
+<span id="cb5-139"><a href="#cb5-139" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;x&quot;: {</span></span>
+<span id="cb5-140"><a href="#cb5-140" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;field&quot;: &quot;Date&quot;,</span></span>
+<span id="cb5-141"><a href="#cb5-141" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;type&quot;: &quot;ordinal&quot;,</span></span>
+<span id="cb5-142"><a href="#cb5-142" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;axis&quot;: {</span></span>
+<span id="cb5-143"><a href="#cb5-143" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;grid&quot;: true,</span></span>
+<span id="cb5-144"><a href="#cb5-144" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;gridOpacity&quot;: 0.3,</span></span>
+<span id="cb5-145"><a href="#cb5-145" aria-hidden="true" tabindex="-1"></a><span class="st">        &quot;labelAngle&quot;: 40</span></span>
+<span id="cb5-146"><a href="#cb5-146" aria-hidden="true" tabindex="-1"></a><span class="st">      }</span></span>
+<span id="cb5-147"><a href="#cb5-147" aria-hidden="true" tabindex="-1"></a><span class="st">    },</span></span>
+<span id="cb5-148"><a href="#cb5-148" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;y&quot;: {</span></span>
+<span id="cb5-149"><a href="#cb5-149" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;field&quot;: &quot;count&quot;,</span></span>
+<span id="cb5-150"><a href="#cb5-150" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;type&quot;: &quot;quantitative&quot;,</span></span>
+<span id="cb5-151"><a href="#cb5-151" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;title&quot;: &quot;Touchpoint count (in 100K)&quot;</span></span>
+<span id="cb5-152"><a href="#cb5-152" aria-hidden="true" tabindex="-1"></a><span class="st">    },</span></span>
+<span id="cb5-153"><a href="#cb5-153" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;color&quot;: {</span></span>
+<span id="cb5-154"><a href="#cb5-154" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;field&quot;: &quot;Channel&quot;,</span></span>
+<span id="cb5-155"><a href="#cb5-155" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;sort&quot;: [&quot;Email Touchpoints&quot;, &quot;Phone Touchpoints&quot;, &quot;Chat Touchpoints&quot;],</span></span>
+<span id="cb5-156"><a href="#cb5-156" aria-hidden="true" tabindex="-1"></a><span class="st">      &quot;scale&quot;: {&quot;scheme&quot;: &quot;set2&quot;}</span></span>
+<span id="cb5-157"><a href="#cb5-157" aria-hidden="true" tabindex="-1"></a><span class="st">    }</span></span>
+<span id="cb5-158"><a href="#cb5-158" aria-hidden="true" tabindex="-1"></a><span class="st">  }</span></span>
+<span id="cb5-159"><a href="#cb5-159" aria-hidden="true" tabindex="-1"></a><span class="st">} </span></span>
+<span id="cb5-160"><a href="#cb5-160" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;</span> <span class="sc">|&gt;</span> <span class="fu">as_vegaspec</span>()</span>
+<span id="cb5-161"><a href="#cb5-161" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb5-162"><a href="#cb5-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-163"><a href="#cb5-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-164"><a href="#cb5-164" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 3</span></span>
+<span id="cb5-165"><a href="#cb5-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-166"><a href="#cb5-166" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 4</span></span>
+<span id="cb5-167"><a href="#cb5-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-168"><a href="#cb5-168" aria-hidden="true" tabindex="-1"></a>dataset: </span>
+<span id="cb5-169"><a href="#cb5-169" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Where I downloaded</span><span class="co">](https://www.kaggle.com/datasets/jayjoshi37/smartphone-usage-and-addiction-prediction?resource=download)</span></span>
+<span id="cb5-170"><a href="#cb5-170" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Dataset</span><span class="co">](https://gist.githubusercontent.com/honggikim02/0d387e86e18464f71f56df29af99b9b8/raw/53a871166ea997c932b3874e6c1a2786a3f0b208/smartphoneaddiction.csv)</span></span>
+</code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal><i class="bi"></i></button></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
 
 

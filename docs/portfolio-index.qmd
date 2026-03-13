@@ -16,3 +16,5 @@ embed-resources: true
 [HW 7](hw7/index.html)
 
 [HW 8](hw8/index.html)
+
+[Final Portfolio](final-portfolio/index.html)

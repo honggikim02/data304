@@ -1,0 +1,167 @@
+---
+title: "Final Portfolio"
+subtitle: "Hong Gi Kim"
+format: 
+  html:
+    output-file: "index"
+embed-resources: true
+code-fold: true
+code-tools: true
+---
+
+## Exercise 1
+
+```{r}
+library(vegawidget)
+
+'
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": {
+    "url": "https://calvin-data304.netlify.app/data/twins-genetics-wide.json"
+  },
+
+ "title": { 
+    "text": "Comparing Genetic Shares of Pairs of Twin",
+    "fontSize": 20,
+    "anchor": "middle",
+    "subtitle": "Using Ancestry kit",
+    "subtitleColor": "grey",
+    "subtitleFontSize": 15},
+
+  "vconcat":[
+    {
+     "height": 200,
+     "width": 200,
+  
+     "title": {
+     "text": "Regions",
+     "orient": "bottom",
+     "anchor": "middle",
+     "offset": 15}, 
+
+     "mark": {"type": "bar", "tooltip": true},
+
+     "encoding": {
+        "facet": {
+          "field": "pair",
+          "columns": 3,
+          "title": null,
+          "header": {
+            "labelExpr": "\'Pair \' + datum.value" 
+          }
+        },
+        "x": {
+          "field": "region",
+          "type": "nominal",
+          "axis": {"labelAngle":45},
+          "title": null
+        },
+        "y":{
+          "field": "Ancestry",
+          "type": "quantitative",
+          "title": "Genetic Share"
+        },
+        "xOffset": {
+          "field": "id"
+        },
+        "color": {
+          "field": "id",
+          "title": "A/B"
+        }
+      },
+      "resolve": {
+        "axis":{"x": "independent"}
+      }
+    }
+  ]
+}
+'|> as_vegaspec()
+```
+
+
+
+## Exercise 2
+
+**Challenge: Identify issues with this graphic and make something better.**
+
+*Issues*
+
+1. The y-axis runs from 0.00 to 1.25, but the data labels show totals of "478,123" and "496,234". The y-axis is likely meant to represent units of 100,000 (so 0.50 means 50,000 touchpoints per month), but missing the "in 100,000s" label forces the audience to do mental math to figure out what the bars represent.
+
+2. Stacked bars are great for showing totals, but terrible for showing individual trends. Because the "Phone" segment at the bottom fluctuates, the baselines for "Chat" and "Email" are constantly moving up and down. This makes it visually impossible to tell if chat or email volumes are actually trending up or down over time.
+
+3. The horizontal brackets showing the yearly totals (478,123 and 496,234) have black dots that float arbitrarily and cut right through the data bars, creating visual clutter.
+
+
+*Possible Improvements*
+
+1. label the y-axis with (in 100K) to show that 0.5 represents 50,000.
+
+2. Use a Line Chart with three distinct lines—one for Phone, one for Chat, and one for Email. This will show individual trend of each channel type to resolve the problem of stacked bar.
+
+3. Exclude the totals (478,123 and 496,234) from the new generated line graph, however, if the information is critical or necessary, it is always possible to add in the description paragraph afterwards.
+
+```{r}
+library(vegawidget)
+'
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Comparison of genetic similarity scores across different kits.",
+  "data": {
+    "url": "https://gist.githubusercontent.com/honggikim02/cdb6d790662954fd22d8d99db1c22829/raw/c288d91b37cbf45677b8c37ecd0da7bb99b03f03/customer.csv"
+  },
+  "height": 400,
+  "width": 600,
+  "title": {
+    "text": "Monthly Customer Touchpoints by Channel (2018–2019)",
+    "subtitle": "Phone, Chat, and Email Touchpoint Trend",
+    "fontSize": 20,
+    "subtitleColor": "grey",
+    "subtitleFontSize": 15
+  },
+  "transform": [
+    {
+      "fold": ["Phone Touchpoints", "Chat Touchpoints", "Email Touchpoints"],
+      "as": ["Channel", "count"]
+    }
+  ],
+  "mark": {
+    "type": "line", 
+    "tooltip": true,
+    "point": true
+    },
+  "encoding": {
+    "x": {
+      "field": "Date",
+      "type": "ordinal",
+      "axis": {
+        "grid": true,
+        "gridOpacity": 0.3,
+        "labelAngle": 40
+      }
+    },
+    "y": {
+      "field": "count",
+      "type": "quantitative",
+      "title": "Touchpoint count (in 100K)"
+    },
+    "color": {
+      "field": "Channel",
+      "sort": ["Email Touchpoints", "Phone Touchpoints", "Chat Touchpoints"],
+      "scale": {"scheme": "set2"}
+    }
+  }
+} 
+' |> as_vegaspec()
+```
+
+
+## Exercise 3
+
+## Exercise 4
+
+dataset: 
+[Where I downloaded](https://www.kaggle.com/datasets/jayjoshi37/smartphone-usage-and-addiction-prediction?resource=download)
+[Dataset](https://gist.githubusercontent.com/honggikim02/0d387e86e18464f71f56df29af99b9b8/raw/53a871166ea997c932b3874e6c1a2786a3f0b208/smartphoneaddiction.csv)
+
