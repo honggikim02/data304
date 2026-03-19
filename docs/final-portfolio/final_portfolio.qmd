@@ -74,12 +74,80 @@ library(vegawidget)
         "axis":{"x": "independent"}
       }
     }
-  ]
+  ],
+  "config": {
+    "view": {"stroke": ""},
+    "axis": {"grid": true, "gridOpacity": 0.5}
+  }
+}
+'|> as_vegaspec()
+```
+
+```{r}
+library(vegawidget)
+'
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": {
+    "url": "https://calvin-data304.netlify.app/data/twins-genetics-long.json"
+  },
+  "title": {
+    "text": "Consistency Across DNA Kits",
+    "subtitle": "How different testing kits estimate ancestry for the same individuals",
+    "fontSize": 18,
+    "anchor": "middle"
+  },
+  "height": 100,
+  "width": 600,
+  "mark": {
+    "type": "circle",
+    "size": 150,
+    "opacity": 0.6
+  },
+  "encoding": {
+    "x": {
+      "field": "genetic share",
+      "type": "quantitative",
+      "title": "Estimated Genetic Share",
+      "scale": {"domain": [0, 1]}
+    },
+    "y": {
+      "field": "region",
+      "type": "nominal",
+      "title": "Ancestry Region",
+      "sort": "-x"
+    },
+    "color": {
+      "field": "kit",
+      "type": "nominal",
+      "title": "Testing Kit",
+      "scale": {"scheme": "set2"}
+    },
+    "row": {
+      "field": "twin",
+      "type": "nominal",
+      "title": "Individual"
+    },
+    "tooltip": [
+      {"field": "kit", "type": "nominal", "title": "Kit"},
+      {"field": "region", "type": "nominal", "title": "Region"},
+      {"field": "genetic share", "type": "quantitative", "title": "Percentage"}
+    ]
+  },
+  "config": {
+    "view": {"stroke": "transparent"},
+    "axis": {"grid": true, "gridOpacity": 0.5}
+  }
 }
 '|> as_vegaspec()
 ```
 
 
+The graphic above tells the story of algorithmic uncertainty in consumer DNA testing. 
+
+
+This graphic tells the story of algorithmic uncertainty in consumer DNA testing. 
+While we might assume that reading DNA is an exact science, this visualization reveals that different kits (like 23andMe versus AncestryDNA) interpret the exact same genetic material differently. By plotting the estimated percentage on the X-axis and grouping by ancestry region on the Y-axis, we can clearly see the "spread" of the colored dots. For broad categories like "European," the dots are likely clustered tightly together, showing agreement across kits. However, for more specific or underrepresented regional populations, the colored dots spread far apart, indicating that the testing companies strongly disagree on the user's genetic makeup. It proves that these kits are giving us estimates based on their specific reference panels, not absolute facts.
 
 ## Exercise 2
 
@@ -159,9 +227,411 @@ library(vegawidget)
 
 ## Exercise 3
 
+```{r}
+library(vegawidget)
+'
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "data": {
+    "url": "https://gist.githubusercontent.com/honggikim02/acaf2ea21ea468bf15777b3022348c1d/raw/c8547a9a5cdb8c7ad5a9fba5f0d6d84df3bc9ea0/burnout.csv"
+  },
+  "title": {
+    "text": "What affects the Study Hour the most?",
+    "subtitle": "Daily study Hours by FOUR different factors",
+    "fontSize": 20,
+    "anchor": "middle",
+    "offset": 20
+  },
+  "vconcat": [
+    {
+        "hconcat": [
+        {
+          "title": "Effect of Stress Level",
+          "width": 350,
+          "height": 300,
+          "mark": {
+            "type": "bar", 
+            "opacity": 0.4, 
+            "size": 70, 
+            "cornerRadiusEnd": 4},
+          "encoding": {
+            "x": {
+              "field": "stress_level", 
+              "type": "nominal",
+              "title": "Stress Level",
+              "sort": ["Low", "Medium", "High"],
+              "axis": {"labelAngle": 0}
+            },
+            "y": {
+              "field": "daily_study_hours",
+              "type": "quantitative",
+              "aggregate": "average",
+              "title": "Average Daily Study Hours"
+            }
+          }
+        },
+        {
+          "title": "Effect of Academic Pressure",
+          "width": 300,
+          "height": 300,
+          "mark": {"type": "circle", "size": 50},
+              "encoding": {
+                "x": {
+                  "field": "academic_pressure_score",
+                  "type": "quantitative",
+                  "title": "Academic Pressure Score",
+                  "axis": {"labelAngle": 0}
+                },
+              
+                "y": {
+                  "field": "daily_study_hours",
+                  "type": "quantitative",
+                  "title": "Daily Study Hours"
+                }
+              }
+            }
+          ]
+        },
+    {
+    "hconcat":[
+      {
+            "title": "Effect of Year in University",
+                "width": 350,
+                "height": 300,
+                "mark": {
+                  "type": "bar", 
+                  "opacity": 0.4, 
+                  "size": 70, 
+                  "cornerRadiusEnd": 4,
+                  "color": "salmon"},
+                "encoding": {
+                  "x": {
+                    "field": "year", 
+                    "type": "nominal",
+                    "title": "Year (in university)",
+                    "axis": {"labelAngle": 0}
+                  },
+                  "y": {
+                    "field": "daily_study_hours",
+                    "aggregate":"average",
+                    "type": "quantitative",
+                    "title": "Average Daily Study Hours"
+                  }
+                }
+          },
+          {
+            "title": "Effect of Burnout level",
+                "width": 350,
+                "height": 300,
+                "mark": {
+                  "type": "bar", 
+                  "opacity": 0.4, 
+                  "size": 70, 
+                  "cornerRadiusEnd": 4,
+                  "color": "green"},
+                "encoding": {
+                  "x": {
+                    "field": "burnout_level", 
+                    "type": "nominal",
+                    "title": "Burnout Level",
+                    "sort": ["Low", "Medium", "High"],
+                    "axis": {"labelAngle": 0}
+
+                  },
+                  "y": {
+                    "field": "daily_study_hours",
+                    "aggregate": "average",
+                    "type": "quantitative",
+                    "title": "Average Daily Study Hours"
+                  }
+                }
+          }
+      ]
+    }
+  ],
+      
+  "config": {
+    "view": {"stroke": "transparent"},
+    "concat": {"spacing": 50},
+    "axis": {"grid": false, "labelFontSize": 12, "titleFontSize": 14}
+  }
+}
+'|> as_vegaspec()
+```
+
+**a**
+Searching through dataset website,
+
+[Referred Dataset](https://www.kaggle.com/datasets/sehaj1104/student-mental-health-and-burnout-dataset)-[new CSV](https://gist.githubusercontent.com/honggikim02/acaf2ea21ea468bf15777b3022348c1d/raw/c8547a9a5cdb8c7ad5a9fba5f0d6d84df3bc9ea0/burnout.csv)
+
 ## Exercise 4
+
+
+**a**
+```{r}
+library(vegawidget)
+'
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://gist.githubusercontent.com/honggikim02/0d387e86e18464f71f56df29af99b9b8/raw/53a871166ea997c932b3874e6c1a2786a3f0b208/smartphoneaddiction.csv"
+  },
+  "transform": [
+    {"filter": "datum.gender != \'Other\'"},
+    {"filter": "datum.stress_level != \'Medium\'"},
+    {"filter": "datum.academic_work_impact != \'No\'"},
+    {"filter": "datum.age != \'35\'"}
+  ], 
+  "title": {
+    "text": "The Extremes of Smartphone Addiction",
+    "subtitle": "Highlight a cluster in the scatterplot to filter the dashboard",
+    "fontSize": 20,
+    "anchor": "middle",
+    "offset": 20
+  },
+  "vconcat": [
+    {
+      "hconcat": [
+        {
+          "title": "Screen Time vs. Work/Study Time (Drag to Select)",
+          "width": 350,
+          "height": 250,
+          "mark": {"type": "point", "opacity": 0.5},
+          "params": [
+            {
+              "name": "brush",
+              "select": "interval"
+            }
+          ],
+          "encoding": {
+            "x": {
+              "field": "daily_screen_time_hours",
+              "type": "quantitative",
+              "title": "Daily Screen Time (Hours)"
+            },
+            "y": {
+              "field": "work_study_hours",
+              "type": "quantitative",
+              "title": "Work & Study Time (Hours)"
+            },
+            "color": {
+              "condition": {
+                "param": "brush",
+                "field": "addicted_label",
+                "type": "nominal",
+                "title": "Addicted Status",
+                "scale": {"scheme": "set1"}
+              },
+              "value": "lightgray"
+            },
+            "tooltip": [
+              {"field": "age", "type": "quantitative", "title": "Age"},
+              {"field": "gender", "type": "nominal", "title": "Gender"},
+              {"field": "daily_screen_time_hours", "type": "quantitative", "title": "Screen Time", "format": ".1f"},
+              {"field": "sleep_hours", "type": "quantitative", "title": "Sleep Hours", "format": ".1f"},
+              {"field": "addicted_label", "type": "nominal", "title": "Addicted (1=Yes, 0=No)"}
+            ]
+          }
+        },
+        {
+          "title": "User Count by Stress Level",
+          "width": 250,
+          "height": 250,
+          "mark": {"type": "bar", "cornerRadiusEnd": 4},
+          "encoding": {
+            "x": {
+              "field": "stress_level",
+              "type": "nominal",
+              "title": "Stress Level",
+              "sort": ["Low", "High"],
+              "axis": {"labelAngle": 0}
+            },
+            "y": {
+              "aggregate": "count",
+              "type": "quantitative",
+              "title": "Total Users",
+              "scale": {"domain": [0, 900]}
+            },
+            "color": {
+              "field": "stress_level",
+              "type": "nominal",
+              "legend": null,
+              "scale": {"scheme": "category10"}
+            }
+          },
+          "transform": [
+            {"filter": {"param": "brush"}}
+          ]
+        }
+      ]
+    },
+    {
+      "hconcat": [
+        {
+          "title": "Age Demographics of Selected Users",
+          "width": 420,
+          "height": 150,
+          "mark": {"type": "bar", "cornerRadiusEnd": 4},
+          "encoding": {
+            "x": {
+              "field": "age",
+              "bin": {"maxbins": 25},
+              "title": "Age Bracket"
+            },
+            "y": {
+              "aggregate": "count",
+              "title": "Number of Users",
+              "scale": {"domain": [0, 150]}
+            },
+            "color": {
+              "field": "age",
+              "bin": {"maxbins": 25},
+              "type": "quantitative",
+              "legend": null,
+              "scale": {"scheme": "teals"}
+            }
+          },
+          "transform": [
+            {"filter": {"param": "brush"}}
+          ]
+        },
+        {
+          "title": "Sleep Distribution & Average",
+          "width": 200,
+          "height": 150,
+          "transform": [
+            {"filter": {"param": "brush"}}
+          ],
+          "layer": [
+            {
+              "mark": {"type": "bar", "opacity": 0.6, "cornerRadiusEnd": 4, "color": "sandybrown"},
+              "encoding": {
+                "x": {
+                  "field": "sleep_hours",
+                  "bin": {"maxbins": 10},
+                  "title": "Hours of Sleep",
+                  "scale": {"domain": [4.5, 9]}
+                },
+                "y": {
+                  "aggregate": "count",
+                  "title": "Number of Users",
+                  "scale": {"domain": [0, 200]} 
+                }
+              }
+            },
+            {
+              "mark": {"type": "rule", "color": "firebrick", "size": 3},
+              "encoding": {
+                "x": {
+                  "aggregate": "mean",
+                  "field": "sleep_hours",
+                  "type": "quantitative"
+                }
+                
+              }
+            },
+            {
+              "mark": {
+                "type": "text",
+                "color": "firebrick",
+                "align": "left",
+                "dx": 5,
+                "dy": -60,
+                "fontWeight": "bold",
+                "fontSize": 12
+              },
+              "encoding": {
+                "x": {
+                  "aggregate": "mean",
+                  "field": "sleep_hours",
+                  "type": "quantitative"
+                },
+                "text": {
+                  "aggregate": "mean",
+                  "field": "sleep_hours",
+                  "type": "quantitative",
+                  "format": ".1f"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "config": {
+    "view": {"stroke": "transparent"},
+    "concat": {"spacing": 40},
+    "axis": {"grid": false, "labelFontSize": 11, "titleFontSize": 13}
+  }
+}
+' |> as_vegaspec()
+
+```
+
+**b**
+
+*about the data source*
+The data used for this graphic is a dataset containing 7,500 records of user smartphone habits.
 
 dataset: 
 [Where I downloaded](https://www.kaggle.com/datasets/jayjoshi37/smartphone-usage-and-addiction-prediction?resource=download)
-[Dataset](https://gist.githubusercontent.com/honggikim02/0d387e86e18464f71f56df29af99b9b8/raw/53a871166ea997c932b3874e6c1a2786a3f0b208/smartphoneaddiction.csv)
+-
+[Raw Dataset (csv)](https://gist.githubusercontent.com/honggikim02/0d387e86e18464f71f56df29af99b9b8/raw/53a871166ea997c932b3874e6c1a2786a3f0b208/smartphoneaddiction.csv)
 
+**Maximizing the Data-Ink Ratio (Decluttering)**: In accordance with Tufte’s principles, *non-essential visual clutter* was stripped away. I removed the default background gridlines to give the data room to breathe. I also removed redundant legends from the Stress and Age charts, as the X-axis labels already provided that information clearly.
+
+**Preattentive Attributes (Color)**: In the primary scatterplot, color is used as a preattentive attribute to immediately separate users by their "Addicted Status." By using the high-contrast color scheme (red vs blue), the viewer instantly processes the "wall" where daily screen time crosses into addiction without having to actively read the axes.
+
+**Data Integrity (Honest Scales)**: A common pitfall in interactive dashboards is allowing axes to auto-zoom when data is filtered, which can mislead the viewer about the size of a subset. To maintain visual integrity, I hardcoded the Y-axis scales. When a viewer highlights a small cluster of users, the bars shrink relative to the maximum population, maintaining an honest representation of the total dataset. Although this might cause difficulties for the viewrs to read the data at small cluster, I believed it would be a better choice compare to when the axes scales shift every single time.
+
+**Layering for Context**: Instead of just showing a sleep distribution histogram, I layered a calculated average rule line (the red vertical line) with exact text over the bars. This allows the viewer to see both the shape of the data and the summary statistic simultaneously. Also, this would help the viewers to know the changes in average even in small clusters where the bars are very low due to fixed y-axis scale.
+
+
+## Exercise 5
+
+1. **An encoding channel other than x or y**
+
+Where I used it: the color channel extensively.
+
+How it was used: In the scatterplot, I mapped color to the addicted_label to clearly separate the addicted users (blue) from the non-addicted users (red). It was also used in the Age chart (using the teals color scheme) and the Stress chart to give each category a distinct visual identity.
+
+
+2. **Layers**
+
+Where I used it: The "Sleep Distribution & Average" chart in the bottom right.
+
+How it was used: I used the "layer" to stack three completely different marks on top of the same X/Y axis. I layered a bar mark (the orange histogram), a rule mark (the red vertical line), and a text mark (the exact numerical average) all in one chart space to deliver precise informations.
+
+
+3. **Facets**
+
+
+4. **Concatenation or Repeat**
+
+Where I used it: The entire layout of the dashboard.
+
+How it was used: I used "vconcat" (vertical concatenation) to split the graphic into a top half and a bottom half. Inside those halves, I used "hconcat" (horizontal concatenation) to place the individual charts side-by-side.
+
+5. **Non-default settings for a channel’s scale or guide**
+
+Where I used it: Across almost all the charts (Axes, Domains, and Colors).
+
+How it was used: 
+  - Scale (Domain): As mentioned in Exercise 4, I applied "scale": {"domain": [0, 900]} to the Y-axes of the bar charts. This non-default setting locks the axis in place so the bars dynamically shrink when you filter the data, rather than the chart zooming in confusingly.
+
+  - Scale (Color): I overrode the default color palettes by specifying "scale": {"scheme": "set1"} and "scheme": "teals".
+
+  - Guide (Axis): I used "axis": {"labelAngle": 0} to force the text labels to sit horizontal instead of tilting diagonally.
+
+6. **Tooltips**
+
+Where I used it: The scatterplot dots.
+
+How it was used: I fed an array of fields (line 55 - line 59) into the "tooltip" channel. Now, hovering over a single, anonymous dot reveals a pop-up with 5 specific data points (Age, Gender, Screen Time, Sleep Hours, Addicted Status).
+
+7. **Another kind of interaction (Brushing)**
+
+Where I used it: The main "Screen Time vs. Work/Study Time" scatterplot.
+
+How it was used: I defined a parameter called "brush" configured for "interval". This allows the user to click and drag a rectangular box over a cluster of dots. We then applied a "transform": [{"filter": {"param": "brush"}}] to the other three charts, turning the brush into an interactive, cross-filtering tool that updates the whole dashboard in real-time.
