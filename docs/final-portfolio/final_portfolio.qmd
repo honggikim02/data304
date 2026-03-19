@@ -11,6 +11,16 @@ code-tools: true
 
 ## Exercise 1
 
+**a**
+
+I like the second graphics on HW4 Gallery, especially the comparison between the twins. It shows the distinct values of genetic share of each person (A/B) on each regions tested. This helps to visualize and understand the relationship between each twins better. 
+
+**b**
+
+I do not like the third graphics on HW4 Gallery, because all the bars (genetic share) are summed up to single bar leading all the bars to 1.0 which doesn't give any information from the graphics.
+
+**c**
+
 ```{r}
 library(vegawidget)
 
@@ -83,6 +93,8 @@ library(vegawidget)
 '|> as_vegaspec()
 ```
 
+The facetted side by side bar above illustrates comparison between each pair of twins on their genetic share from different regions. Although I had to decide on one specific test kit to show the comparison - which might cause some reliability issue - but I believed that would be the most precise way to show the relationship between each twin (A/B) without some confounding variables. Looking at tiny differences between each A/B twins, we can see the slight genetic differences.
+
 ```{r}
 library(vegawidget)
 '
@@ -143,11 +155,11 @@ library(vegawidget)
 ```
 
 
-The graphic above tells the story of algorithmic uncertainty in consumer DNA testing. 
+The graphic above tells the story of uncertainty in consumer DNA testing. 
+While we might assume that reading DNA is an exact science, this visualization reveals that different kits interpret the exact same material (twins) differently.
+By plotting the estimated percentage on the X-axis and grouping by ancestry region on the Y-axis, we can clearly see the "spread" of the colored dots. 
+It proves that these kits are giving us estimates based on their specific reference panels, not absolute facts.
 
-
-This graphic tells the story of algorithmic uncertainty in consumer DNA testing. 
-While we might assume that reading DNA is an exact science, this visualization reveals that different kits (like 23andMe versus AncestryDNA) interpret the exact same genetic material differently. By plotting the estimated percentage on the X-axis and grouping by ancestry region on the Y-axis, we can clearly see the "spread" of the colored dots. For broad categories like "European," the dots are likely clustered tightly together, showing agreement across kits. However, for more specific or underrepresented regional populations, the colored dots spread far apart, indicating that the testing companies strongly disagree on the user's genetic makeup. It proves that these kits are giving us estimates based on their specific reference panels, not absolute facts.
 
 ## Exercise 2
 
@@ -360,9 +372,11 @@ library(vegawidget)
 ```
 
 **a**
-Searching through dataset website,
+Searching through dataset website I found
 
 [Referred Dataset](https://www.kaggle.com/datasets/sehaj1104/student-mental-health-and-burnout-dataset)-[new CSV](https://gist.githubusercontent.com/honggikim02/acaf2ea21ea468bf15777b3022348c1d/raw/c8547a9a5cdb8c7ad5a9fba5f0d6d84df3bc9ea0/burnout.csv)
+
+I was always curious about what type of people, or what factors of environment causes the students to push their study hours more. From the Graphics above, there are four factors I chose from a big dataset to show their relationships to daily hours of study. To be honest, most of them were out of my expectation. Academic pressure score (scatterplot) and Burnout level (green bar) didn't show much effect on the study hours; however we could argue that middle range of both variables (Medium burnout level or 5-6 academic pressure score) could cause higher study hours. The stress level of study and the average study hour correlated positively. The most interesting thing was that the average study hour of students decreased significantly as they turned upperclassmen (junior and senior). This might be because of the internships, or job searchings, however, I think it is caused by their tiredness from school and academics that they pursued since freshmen year.
 
 ## Exercise 4
 
@@ -588,6 +602,10 @@ dataset:
 **Layering for Context**: Instead of just showing a sleep distribution histogram, I layered a calculated average rule line (the red vertical line) with exact text over the bars. This allows the viewer to see both the shape of the data and the summary statistic simultaneously. Also, this would help the viewers to know the changes in average even in small clusters where the bars are very low due to fixed y-axis scale.
 
 
+**Alternatives**
+In an earlier iteration, the bottom-right chart simply showed a single bar for "Average Sleep Hours." I removed this and showed graphic of a full Histogram Distribution. An average value completely hides the spread of the data. By showing the distribution, we can uncover a much more interesting narrative: highly addicted users don't all get 6 hours of sleep; rather, they are bimodal—some get 4 hours, while others crash and get 9.
+
+
 ## Exercise 5
 
 1. **An encoding channel other than x or y**
@@ -606,12 +624,15 @@ How it was used: I used the "layer" to stack three completely different marks on
 
 3. **Facets**
 
+*Note: Although the graphic looks like I used facet to sort multiple graphs and plots, faceting is used to split a single chart type into multiple small multiples based on a category. Because I wanted to show completely different types of charts together, I used concatenation instead.
+
 
 4. **Concatenation or Repeat**
 
 Where I used it: The entire layout of the dashboard.
 
 How it was used: I used "vconcat" (vertical concatenation) to split the graphic into a top half and a bottom half. Inside those halves, I used "hconcat" (horizontal concatenation) to place the individual charts side-by-side.
+
 
 5. **Non-default settings for a channel’s scale or guide**
 
@@ -624,14 +645,39 @@ How it was used:
 
   - Guide (Axis): I used "axis": {"labelAngle": 0} to force the text labels to sit horizontal instead of tilting diagonally.
 
+
 6. **Tooltips**
 
 Where I used it: The scatterplot dots.
 
 How it was used: I fed an array of fields (line 55 - line 59) into the "tooltip" channel. Now, hovering over a single, anonymous dot reveals a pop-up with 5 specific data points (Age, Gender, Screen Time, Sleep Hours, Addicted Status).
 
+
 7. **Another kind of interaction (Brushing)**
 
 Where I used it: The main "Screen Time vs. Work/Study Time" scatterplot.
 
 How it was used: I defined a parameter called "brush" configured for "interval". This allows the user to click and drag a rectangular box over a cluster of dots. We then applied a "transform": [{"filter": {"param": "brush"}}] to the other three charts, turning the brush into an interactive, cross-filtering tool that updates the whole dashboard in real-time.
+
+
+## Exercise 6
+
+**a. Advanced Vega-Lite Features**
+
+1. **Global Theming through the `config` Block (Exercise 3 & 4):** Rather than manually styling the axes, borders, and fonts for every single chart individually, I utilized the top-level `"config"` block at the end of my JSON specifications. For example, in the complex dashboard for Exercise 4, I used `"config": {"view": {"stroke": "transparent"}, "concat": {"spacing": 40}, "axis": {"grid": false}}`. 
+
+2. **Small Multiples through the `row` Encoding Channel (Exercise 1):** To show how different testing kits estimated ancestry for the *same* individuals, I needed to split the scatterplot. Instead of building a complex, nested `"facet"` block, I used the `"row"` encoding channel. This is a highly efficient, advanced shortcut in Vega-Lite that instantly generates vertically stacked small multiples, giving each twin their own dedicated horizontal track.
+
+3. **Calculated Expressions in Headers (Exercise 1):** In the faceting for the twin genetic share graphic, I didn't want the panel headers to just show bare numbers or raw data strings. Inside the `"header"` block of the facet encoding, I used `"labelExpr": "\'Pair \' + datum.value"`. This feature allows you to write expressions to dynamically concatenate text and data, resulting in much cleaner, reader-friendly labels like "Pair 1" instead of just "1".
+
+
+**b. Application of Graphic Design Principles**
+
+1. **Titles as Storytelling Tools (Wilke):** Claus O. Wilke emphasizes that text is a crucial graphical element and that titles should ideally bring the core message or provide instructions, rather than just stating the variables. In Exercise 4, instead of a generic title like "Scatterplot of Screen Time," I used "The Extremes of Smartphone Addiction" alongside an instructional subtitle ("Highlight a cluster..."). 
+   * *Citation:* Wilke, C. O. (2019). *Fundamentals of Data Visualization*. O'Reilly Media. Chapter 22: "Titles, captions, and tables." (Available at: [https://clauswilke.com/dataviz/figure-titles-captions.html](https://clauswilke.com/dataviz/figure-titles-captions.html))
+   
+2. **Maximizing the Data-Ink Ratio (Tufte):** Edward Tufte famously advocates for erasing non-data-ink to let the actual data stand out. Across my portfolio (especially Exercises 3 and 4), I aggressively stripped away default programmatic clutter. I explicitly removed the chart borders using `"view": {"stroke": "transparent"}` and removed the distracting background gridlines (`"axis": {"grid": false}`). 
+   * *Citation:* Tufte, E. R. (2001). *The Visual Display of Quantitative Information* (2nd ed.). Graphics Press. Chapter 4: "Data-Ink and Graphical Redesign." [pdf](https://kyl.neocities.org/books/%5BTEC%20TUF%5D%20the%20visual%20display%20of%20quantitative%20information.pdf)
+   
+3. **Avoiding Stacked Bars for Trend Comparisons (Healy):** In Exercise 2, the original graphic used a stacked bar chart to show changes in customer touchpoints over time. Kieran Healy points out that stacked bar charts make it extremely difficult to compare the trends of the inner or upper segments because they lack a common baseline. Following this principle, I redesigned the graphic into a line chart with three distinct lines. This allows the viewer to easily and accurately track the independent trajectory of Phone, Chat, and Email touchpoints.
+   * *Citation:* Healy, K. (2019). *Data Visualization: A practical introduction*. Princeton University Press. Chapter 1: "Look at data." (Available at: [https://socviz.co/lookatdata.html](https://socviz.co/lookatdata.html))
