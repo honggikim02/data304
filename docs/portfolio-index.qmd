@@ -7,14 +7,6 @@ format:
 embed-resources: true
 ---
 
-[HW 5](hw5/index.html)
-
->>>>>>> b27290b (hw05 done)
-
-[HW 6](hw6/index.html)
-
-[HW 7](hw7/index.html)
-
-[HW 8](hw8/index.html)
+[HWs](hws/index.html)
 
 [Final Portfolio](final-portfolio/index.html)
