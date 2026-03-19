@@ -7,17 +7,25 @@ format:
 embed-resources: true
 code-fold: true
 code-tools: true
+editor: 
+  markdown: 
+    wrap: 72
 ---
 
 ## Exercise 1
 
 **a**
 
-I like the second graphics on HW4 Gallery, especially the comparison between the twins. It shows the distinct values of genetic share of each person (A/B) on each regions tested. This helps to visualize and understand the relationship between each twins better. 
+I like the second graphics on HW4 Gallery, especially the comparison
+between the twins. It shows the distinct values of genetic share of each
+person (A/B) on each regions tested. This helps to visualize and
+understand the relationship between each twins better.
 
 **b**
 
-I do not like the third graphics on HW4 Gallery, because all the bars (genetic share) are summed up to single bar leading all the bars to 1.0 which doesn't give any information from the graphics.
+I do not like the third graphics on HW4 Gallery, because all the bars
+(genetic share) are summed up to single bar leading all the bars to 1.0
+which doesn't give any information from the graphics.
 
 **c**
 
@@ -93,7 +101,13 @@ library(vegawidget)
 '|> as_vegaspec()
 ```
 
-The facetted side by side bar above illustrates comparison between each pair of twins on their genetic share from different regions. Although I had to decide on one specific test kit to show the comparison - which might cause some reliability issue - but I believed that would be the most precise way to show the relationship between each twin (A/B) without some confounding variables. Looking at tiny differences between each A/B twins, we can see the slight genetic differences.
+The facetted side by side bar above illustrates comparison between each
+pair of twins on their genetic share from different regions. Although I
+had to decide on one specific test kit to show the comparison - which
+might cause some reliability issue - but I believed that would be the
+most precise way to show the relationship between each twin (A/B)
+without some confounding variables. Looking at tiny differences between
+each A/B twins, we can see the slight genetic differences.
 
 ```{r}
 library(vegawidget)
@@ -154,33 +168,51 @@ library(vegawidget)
 '|> as_vegaspec()
 ```
 
-
-The graphic above tells the story of uncertainty in consumer DNA testing. 
-While we might assume that reading DNA is an exact science, this visualization reveals that different kits interpret the exact same material (twins) differently.
-By plotting the estimated percentage on the X-axis and grouping by ancestry region on the Y-axis, we can clearly see the "spread" of the colored dots. 
-It proves that these kits are giving us estimates based on their specific reference panels, not absolute facts.
-
+The graphic above tells the story of uncertainty in consumer DNA
+testing. While we might assume that reading DNA is an exact science,
+this visualization reveals that different kits interpret the exact same
+material (twins) differently. By plotting the estimated percentage on
+the X-axis and grouping by ancestry region on the Y-axis, we can clearly
+see the "spread" of the colored dots. It proves that these kits are
+giving us estimates based on their specific reference panels, not
+absolute facts.
 
 ## Exercise 2
 
-**Challenge: Identify issues with this graphic and make something better.**
+**Challenge: Identify issues with this graphic and make something
+better.** 
+
+![](images/스크린샷 2026-03-19 오전 11.31.36.png){width="426"}
 
 *Issues*
 
-1. The y-axis runs from 0.00 to 1.25, but the data labels show totals of "478,123" and "496,234". The y-axis is likely meant to represent units of 100,000 (so 0.50 means 50,000 touchpoints per month), but missing the "in 100,000s" label forces the audience to do mental math to figure out what the bars represent.
+1.  The y-axis runs from 0.00 to 1.25, but the data labels show totals
+    of "478,123" and "496,234". The y-axis is likely meant to represent
+    units of 100,000 (so 0.50 means 50,000 touchpoints per month), but
+    missing the "in 100,000s" label forces the audience to do mental
+    math to figure out what the bars represent.
 
-2. Stacked bars are great for showing totals, but terrible for showing individual trends. Because the "Phone" segment at the bottom fluctuates, the baselines for "Chat" and "Email" are constantly moving up and down. This makes it visually impossible to tell if chat or email volumes are actually trending up or down over time.
+2.  Stacked bars are great for showing totals, but terrible for showing
+    individual trends. Because the "Phone" segment at the bottom
+    fluctuates, the baselines for "Chat" and "Email" are constantly
+    moving up and down. This makes it visually impossible to tell if
+    chat or email volumes are actually trending up or down over time.
 
-3. The horizontal brackets showing the yearly totals (478,123 and 496,234) have black dots that float arbitrarily and cut right through the data bars, creating visual clutter.
-
+3.  The horizontal brackets showing the yearly totals (478,123 and
+    496,234) have black dots that float arbitrarily and cut right
+    through the data bars, creating visual clutter.
 
 *Possible Improvements*
 
-1. label the y-axis with (in 100K) to show that 0.5 represents 50,000.
+1.  label the y-axis with (in 100K) to show that 0.5 represents 50,000.
 
-2. Use a Line Chart with three distinct lines—one for Phone, one for Chat, and one for Email. This will show individual trend of each channel type to resolve the problem of stacked bar.
+2.  Use a Line Chart with three distinct lines—one for Phone, one for
+    Chat, and one for Email. This will show individual trend of each
+    channel type to resolve the problem of stacked bar.
 
-3. Exclude the totals (478,123 and 496,234) from the new generated line graph, however, if the information is critical or necessary, it is always possible to add in the description paragraph afterwards.
+3.  Exclude the totals (478,123 and 496,234) from the new generated line
+    graph, however, if the information is critical or necessary, it is
+    always possible to add in the description paragraph afterwards.
 
 ```{r}
 library(vegawidget)
@@ -235,7 +267,6 @@ library(vegawidget)
 } 
 ' |> as_vegaspec()
 ```
-
 
 ## Exercise 3
 
@@ -371,17 +402,32 @@ library(vegawidget)
 '|> as_vegaspec()
 ```
 
-**a**
-Searching through dataset website I found
+**a** Searching through dataset website I found
 
-[Referred Dataset](https://www.kaggle.com/datasets/sehaj1104/student-mental-health-and-burnout-dataset)-[new CSV](https://gist.githubusercontent.com/honggikim02/acaf2ea21ea468bf15777b3022348c1d/raw/c8547a9a5cdb8c7ad5a9fba5f0d6d84df3bc9ea0/burnout.csv)
+[Referred
+Dataset](https://www.kaggle.com/datasets/sehaj1104/student-mental-health-and-burnout-dataset)-[new
+CSV](https://gist.githubusercontent.com/honggikim02/acaf2ea21ea468bf15777b3022348c1d/raw/c8547a9a5cdb8c7ad5a9fba5f0d6d84df3bc9ea0/burnout.csv)
 
-I was always curious about what type of people, or what factors of environment causes the students to push their study hours more. From the Graphics above, there are four factors I chose from a big dataset to show their relationships to daily hours of study. To be honest, most of them were out of my expectation. Academic pressure score (scatterplot) and Burnout level (green bar) didn't show much effect on the study hours; however we could argue that middle range of both variables (Medium burnout level or 5-6 academic pressure score) could cause higher study hours. The stress level of study and the average study hour correlated positively. The most interesting thing was that the average study hour of students decreased significantly as they turned upperclassmen (junior and senior). This might be because of the internships, or job searchings, however, I think it is caused by their tiredness from school and academics that they pursued since freshmen year.
+I was always curious about what type of people, or what factors of
+environment causes the students to push their study hours more. From the
+Graphics above, there are four factors I chose from a big dataset to
+show their relationships to daily hours of study. To be honest, most of
+them were out of my expectation. Academic pressure score (scatterplot)
+and Burnout level (green bar) didn't show much effect on the study
+hours; however we could argue that middle range of both variables
+(Medium burnout level or 5-6 academic pressure score) could cause higher
+study hours. The stress level of study and the average study hour
+correlated positively. The most interesting thing was that the average
+study hour of students decreased significantly as they turned
+upperclassmen (junior and senior). This might be because of the
+internships, or job searchings, however, I think it is caused by their
+tiredness from school and academics that they pursued since freshmen
+year.
 
 ## Exercise 4
 
-
 **a**
+
 ```{r}
 library(vegawidget)
 '
@@ -585,99 +631,188 @@ library(vegawidget)
 
 **b**
 
-*about the data source*
-The data used for this graphic is a dataset containing 7,500 records of user smartphone habits.
+*about the data source* The data used for this graphic is a dataset
+containing 7,500 records of user smartphone habits.
 
-dataset: 
-[Where I downloaded](https://www.kaggle.com/datasets/jayjoshi37/smartphone-usage-and-addiction-prediction?resource=download)
--
-[Raw Dataset (csv)](https://gist.githubusercontent.com/honggikim02/0d387e86e18464f71f56df29af99b9b8/raw/53a871166ea997c932b3874e6c1a2786a3f0b208/smartphoneaddiction.csv)
+dataset: [Where I
+downloaded](https://www.kaggle.com/datasets/jayjoshi37/smartphone-usage-and-addiction-prediction?resource=download) -
+[Raw Dataset
+(csv)](https://gist.githubusercontent.com/honggikim02/0d387e86e18464f71f56df29af99b9b8/raw/53a871166ea997c932b3874e6c1a2786a3f0b208/smartphoneaddiction.csv)
 
-**Maximizing the Data-Ink Ratio (Decluttering)**: In accordance with Tufte’s principles, *non-essential visual clutter* was stripped away. I removed the default background gridlines to give the data room to breathe. I also removed redundant legends from the Stress and Age charts, as the X-axis labels already provided that information clearly.
+**Maximizing the Data-Ink Ratio (Decluttering)**: In accordance with
+Tufte’s principles, *non-essential visual clutter* was stripped away. I
+removed the default background gridlines to give the data room to
+breathe. I also removed redundant legends from the Stress and Age
+charts, as the X-axis labels already provided that information clearly.
 
-**Preattentive Attributes (Color)**: In the primary scatterplot, color is used as a preattentive attribute to immediately separate users by their "Addicted Status." By using the high-contrast color scheme (red vs blue), the viewer instantly processes the "wall" where daily screen time crosses into addiction without having to actively read the axes.
+**Preattentive Attributes (Color)**: In the primary scatterplot, color
+is used as a preattentive attribute to immediately separate users by
+their "Addicted Status." By using the high-contrast color scheme (red vs
+blue), the viewer instantly processes the "wall" where daily screen time
+crosses into addiction without having to actively read the axes.
 
-**Data Integrity (Honest Scales)**: A common pitfall in interactive dashboards is allowing axes to auto-zoom when data is filtered, which can mislead the viewer about the size of a subset. To maintain visual integrity, I hardcoded the Y-axis scales. When a viewer highlights a small cluster of users, the bars shrink relative to the maximum population, maintaining an honest representation of the total dataset. Although this might cause difficulties for the viewrs to read the data at small cluster, I believed it would be a better choice compare to when the axes scales shift every single time.
+**Data Integrity (Honest Scales)**: A common pitfall in interactive
+dashboards is allowing axes to auto-zoom when data is filtered, which
+can mislead the viewer about the size of a subset. To maintain visual
+integrity, I hardcoded the Y-axis scales. When a viewer highlights a
+small cluster of users, the bars shrink relative to the maximum
+population, maintaining an honest representation of the total dataset.
+Although this might cause difficulties for the viewrs to read the data
+at small cluster, I believed it would be a better choice compare to when
+the axes scales shift every single time.
 
-**Layering for Context**: Instead of just showing a sleep distribution histogram, I layered a calculated average rule line (the red vertical line) with exact text over the bars. This allows the viewer to see both the shape of the data and the summary statistic simultaneously. Also, this would help the viewers to know the changes in average even in small clusters where the bars are very low due to fixed y-axis scale.
+**Layering for Context**: Instead of just showing a sleep distribution
+histogram, I layered a calculated average rule line (the red vertical
+line) with exact text over the bars. This allows the viewer to see both
+the shape of the data and the summary statistic simultaneously. Also,
+this would help the viewers to know the changes in average even in small
+clusters where the bars are very low due to fixed y-axis scale.
 
-
-**Alternatives**
-In an earlier iteration, the bottom-right chart simply showed a single bar for "Average Sleep Hours." I removed this and showed graphic of a full Histogram Distribution. An average value completely hides the spread of the data. By showing the distribution, we can uncover a much more interesting narrative: highly addicted users don't all get 6 hours of sleep; rather, they are bimodal—some get 4 hours, while others crash and get 9.
-
+**Alternatives** In an earlier iteration, the bottom-right chart simply
+showed a single bar for "Average Sleep Hours." I removed this and showed
+graphic of a full Histogram Distribution. An average value completely
+hides the spread of the data. By showing the distribution, we can
+uncover a much more interesting narrative: highly addicted users don't
+all get 6 hours of sleep; rather, they are bimodal—some get 4 hours,
+while others crash and get 9.
 
 ## Exercise 5
 
-1. **An encoding channel other than x or y**
+1.  **An encoding channel other than x or y**
 
 Where I used it: the color channel extensively.
 
-How it was used: In the scatterplot, I mapped color to the addicted_label to clearly separate the addicted users (blue) from the non-addicted users (red). It was also used in the Age chart (using the teals color scheme) and the Stress chart to give each category a distinct visual identity.
+How it was used: In the scatterplot, I mapped color to the
+addicted_label to clearly separate the addicted users (blue) from the
+non-addicted users (red). It was also used in the Age chart (using the
+teals color scheme) and the Stress chart to give each category a
+distinct visual identity.
 
+2.  **Layers**
 
-2. **Layers**
+Where I used it: The "Sleep Distribution & Average" chart in the bottom
+right.
 
-Where I used it: The "Sleep Distribution & Average" chart in the bottom right.
+How it was used: I used the "layer" to stack three completely different
+marks on top of the same X/Y axis. I layered a bar mark (the orange
+histogram), a rule mark (the red vertical line), and a text mark (the
+exact numerical average) all in one chart space to deliver precise
+informations.
 
-How it was used: I used the "layer" to stack three completely different marks on top of the same X/Y axis. I layered a bar mark (the orange histogram), a rule mark (the red vertical line), and a text mark (the exact numerical average) all in one chart space to deliver precise informations.
+3.  **Facets**
 
+\*Note: Although the graphic looks like I used facet to sort multiple
+graphs and plots, faceting is used to split a single chart type into
+multiple small multiples based on a category. Because I wanted to show
+completely different types of charts together, I used concatenation
+instead.
 
-3. **Facets**
-
-*Note: Although the graphic looks like I used facet to sort multiple graphs and plots, faceting is used to split a single chart type into multiple small multiples based on a category. Because I wanted to show completely different types of charts together, I used concatenation instead.
-
-
-4. **Concatenation or Repeat**
+4.  **Concatenation or Repeat**
 
 Where I used it: The entire layout of the dashboard.
 
-How it was used: I used "vconcat" (vertical concatenation) to split the graphic into a top half and a bottom half. Inside those halves, I used "hconcat" (horizontal concatenation) to place the individual charts side-by-side.
+How it was used: I used "vconcat" (vertical concatenation) to split the
+graphic into a top half and a bottom half. Inside those halves, I used
+"hconcat" (horizontal concatenation) to place the individual charts
+side-by-side.
 
+5.  **Non-default settings for a channel’s scale or guide**
 
-5. **Non-default settings for a channel’s scale or guide**
+Where I used it: Across almost all the charts (Axes, Domains, and
+Colors).
 
-Where I used it: Across almost all the charts (Axes, Domains, and Colors).
+How it was used: - Scale (Domain): As mentioned in Exercise 4, I applied
+"scale": {"domain": \[0, 900\]} to the Y-axes of the bar charts. This
+non-default setting locks the axis in place so the bars dynamically
+shrink when you filter the data, rather than the chart zooming in
+confusingly.
 
-How it was used: 
-  - Scale (Domain): As mentioned in Exercise 4, I applied "scale": {"domain": [0, 900]} to the Y-axes of the bar charts. This non-default setting locks the axis in place so the bars dynamically shrink when you filter the data, rather than the chart zooming in confusingly.
+-   Scale (Color): I overrode the default color palettes by specifying
+    "scale": {"scheme": "set1"} and "scheme": "teals".
 
-  - Scale (Color): I overrode the default color palettes by specifying "scale": {"scheme": "set1"} and "scheme": "teals".
+-   Guide (Axis): I used "axis": {"labelAngle": 0} to force the text
+    labels to sit horizontal instead of tilting diagonally.
 
-  - Guide (Axis): I used "axis": {"labelAngle": 0} to force the text labels to sit horizontal instead of tilting diagonally.
-
-
-6. **Tooltips**
+6.  **Tooltips**
 
 Where I used it: The scatterplot dots.
 
-How it was used: I fed an array of fields (line 55 - line 59) into the "tooltip" channel. Now, hovering over a single, anonymous dot reveals a pop-up with 5 specific data points (Age, Gender, Screen Time, Sleep Hours, Addicted Status).
+How it was used: I fed an array of fields (line 55 - line 59) into the
+"tooltip" channel. Now, hovering over a single, anonymous dot reveals a
+pop-up with 5 specific data points (Age, Gender, Screen Time, Sleep
+Hours, Addicted Status).
 
-
-7. **Another kind of interaction (Brushing)**
+7.  **Another kind of interaction (Brushing)**
 
 Where I used it: The main "Screen Time vs. Work/Study Time" scatterplot.
 
-How it was used: I defined a parameter called "brush" configured for "interval". This allows the user to click and drag a rectangular box over a cluster of dots. We then applied a "transform": [{"filter": {"param": "brush"}}] to the other three charts, turning the brush into an interactive, cross-filtering tool that updates the whole dashboard in real-time.
-
+How it was used: I defined a parameter called "brush" configured for
+"interval". This allows the user to click and drag a rectangular box
+over a cluster of dots. We then applied a "transform": \[{"filter":
+{"param": "brush"}}\] to the other three charts, turning the brush into
+an interactive, cross-filtering tool that updates the whole dashboard in
+real-time.
 
 ## Exercise 6
 
 **a. Advanced Vega-Lite Features**
 
-1. **Global Theming through the `config` Block (Exercise 3 & 4):** Rather than manually styling the axes, borders, and fonts for every single chart individually, I utilized the top-level `"config"` block at the end of my JSON specifications. For example, in the complex dashboard for Exercise 4, I used `"config": {"view": {"stroke": "transparent"}, "concat": {"spacing": 40}, "axis": {"grid": false}}`. 
+1.  **Global Theming through the `config` Block (Exercise 3 & 4):**
+    Rather than manually styling the axes, borders, and fonts for every
+    single chart individually, I utilized the top-level `"config"` block
+    at the end of my JSON specifications. For example, in the complex
+    dashboard for Exercise 4, I used
+    `"config": {"view": {"stroke": "transparent"}, "concat": {"spacing": 40}, "axis": {"grid": false}}`.
 
-2. **Small Multiples through the `row` Encoding Channel (Exercise 1):** To show how different testing kits estimated ancestry for the *same* individuals, I needed to split the scatterplot. Instead of building a complex, nested `"facet"` block, I used the `"row"` encoding channel. This is a highly efficient, advanced shortcut in Vega-Lite that instantly generates vertically stacked small multiples, giving each twin their own dedicated horizontal track.
+2.  **Small Multiples through the `row` Encoding Channel (Exercise 1):**
+    To show how different testing kits estimated ancestry for the *same*
+    individuals, I needed to split the scatterplot. Instead of building
+    a complex, nested `"facet"` block, I used the `"row"` encoding
+    channel. This is a highly efficient, advanced shortcut in Vega-Lite
+    that instantly generates vertically stacked small multiples, giving
+    each twin their own dedicated horizontal track.
 
-3. **Calculated Expressions in Headers (Exercise 1):** In the faceting for the twin genetic share graphic, I didn't want the panel headers to just show bare numbers or raw data strings. Inside the `"header"` block of the facet encoding, I used `"labelExpr": "\'Pair \' + datum.value"`. This feature allows you to write expressions to dynamically concatenate text and data, resulting in much cleaner, reader-friendly labels like "Pair 1" instead of just "1".
-
+3.  **Calculated Expressions in Headers (Exercise 1):** In the faceting
+    for the twin genetic share graphic, I didn't want the panel headers
+    to just show bare numbers or raw data strings. Inside the `"header"`
+    block of the facet encoding, I used
+    `"labelExpr": "\'Pair \' + datum.value"`. This feature allows you to
+    write expressions to dynamically concatenate text and data,
+    resulting in much cleaner, reader-friendly labels like "Pair 1"
+    instead of just "1".
 
 **b. Application of Graphic Design Principles**
 
-1. **Titles as Storytelling Tools (Wilke):** Claus O. Wilke emphasizes that text is a crucial graphical element and that titles should ideally bring the core message or provide instructions, rather than just stating the variables. In Exercise 4, instead of a generic title like "Scatterplot of Screen Time," I used "The Extremes of Smartphone Addiction" alongside an instructional subtitle ("Highlight a cluster..."). 
-   * *Citation:* Wilke, C. O. (2019). *Fundamentals of Data Visualization*. O'Reilly Media. Chapter 22: "Titles, captions, and tables." (Available at: [https://clauswilke.com/dataviz/figure-titles-captions.html](https://clauswilke.com/dataviz/figure-titles-captions.html))
-   
-2. **Maximizing the Data-Ink Ratio (Tufte):** Edward Tufte famously advocates for erasing non-data-ink to let the actual data stand out. Across my portfolio (especially Exercises 3 and 4), I aggressively stripped away default programmatic clutter. I explicitly removed the chart borders using `"view": {"stroke": "transparent"}` and removed the distracting background gridlines (`"axis": {"grid": false}`). 
-   * *Citation:* Tufte, E. R. (2001). *The Visual Display of Quantitative Information* (2nd ed.). Graphics Press. Chapter 4: "Data-Ink and Graphical Redesign." [pdf](https://kyl.neocities.org/books/%5BTEC%20TUF%5D%20the%20visual%20display%20of%20quantitative%20information.pdf)
-   
-3. **Avoiding Stacked Bars for Trend Comparisons (Healy):** In Exercise 2, the original graphic used a stacked bar chart to show changes in customer touchpoints over time. Kieran Healy points out that stacked bar charts make it extremely difficult to compare the trends of the inner or upper segments because they lack a common baseline. Following this principle, I redesigned the graphic into a line chart with three distinct lines. This allows the viewer to easily and accurately track the independent trajectory of Phone, Chat, and Email touchpoints.
-   * *Citation:* Healy, K. (2019). *Data Visualization: A practical introduction*. Princeton University Press. Chapter 1: "Look at data." (Available at: [https://socviz.co/lookatdata.html](https://socviz.co/lookatdata.html))
+1.  **Titles as Storytelling Tools (Wilke):** Claus O. Wilke emphasizes
+    that text is a crucial graphical element and that titles should
+    ideally bring the core message or provide instructions, rather than
+    just stating the variables. In Exercise 4, instead of a generic
+    title like "Scatterplot of Screen Time," I used "The Extremes of
+    Smartphone Addiction" alongside an instructional subtitle
+    ("Highlight a cluster...").
+    -   *Citation:* Wilke, C. O. (2019). *Fundamentals of Data
+        Visualization*. O'Reilly Media. Chapter 22: "Titles, captions,
+        and tables." (Available at:
+        <https://clauswilke.com/dataviz/figure-titles-captions.html>)
+2.  **Maximizing the Data-Ink Ratio (Tufte):** Edward Tufte famously
+    advocates for erasing non-data-ink to let the actual data stand out.
+    Across my portfolio (especially Exercises 3 and 4), I aggressively
+    stripped away default programmatic clutter. I explicitly removed the
+    chart borders using `"view": {"stroke": "transparent"}` and removed
+    the distracting background gridlines (`"axis": {"grid": false}`).
+    -   *Citation:* Tufte, E. R. (2001). *The Visual Display of
+        Quantitative Information* (2nd ed.). Graphics Press. Chapter 4:
+        "Data-Ink and Graphical Redesign."
+        [pdf](https://kyl.neocities.org/books/%5BTEC%20TUF%5D%20the%20visual%20display%20of%20quantitative%20information.pdf)
+3.  **Avoiding Stacked Bars for Trend Comparisons (Healy):** In Exercise
+    2, the original graphic used a stacked bar chart to show changes in
+    customer touchpoints over time. Kieran Healy points out that stacked
+    bar charts make it extremely difficult to compare the trends of the
+    inner or upper segments because they lack a common baseline.
+    Following this principle, I redesigned the graphic into a line chart
+    with three distinct lines. This allows the viewer to easily and
+    accurately track the independent trajectory of Phone, Chat, and
+    Email touchpoints.
+    -   *Citation:* Healy, K. (2019). *Data Visualization: A practical
+        introduction*. Princeton University Press. Chapter 1: "Look at
+        data." (Available at: <https://socviz.co/lookatdata.html>)
